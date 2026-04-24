@@ -1,15 +1,14 @@
 name: Translate articles to Dutch
 
 on:
-  workflow_run:
-    workflows: ["Deploy to GitHub Pages"]
-    types: [completed]
+  push:
     branches: [main]
+    paths:
+      - 'src/content/articles/*.md'
 
 jobs:
   translate:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
         with:
