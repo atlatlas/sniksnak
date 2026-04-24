@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: atlatlas/sniksnak
+  name: git-gateway
   branch: main
-  auth_type: pkce
-  app_id: Ov23liP2cZT5z3n1W0Yb
 
 media_folder: public/images
 public_folder: /images
