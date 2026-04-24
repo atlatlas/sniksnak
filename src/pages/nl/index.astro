@@ -15,7 +15,9 @@ const strings = t(locale);
 const currentPath = '/nl/';
 
 const allArticles = await getCollection('articles', ({ data }) => data.lang === 'nl');
-const sorted = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sorted = allArticles
+    .filter(a => a.slug !== '_template')
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const featured = sorted.find(a => a.data.featured) || sorted[0];
 const remaining = featured ? sorted.filter(a => a.slug !== featured.slug) : sorted;
@@ -53,7 +55,7 @@ const trendingArticles = sorted.slice(0, 5).map(a => ({ title: a.data.title, slu
         ) : (
             <div class="empty-state">
                 <h2>{strings.empty.title}</h2>
-                <p>{strings.empty.desc} <a href="/admin/">/admin</a></p>
+                <p>{strings.empty.desc} <a href="https://github.com/atlatlas/sniksnak/new/main/src/content/articles">GitHub</a></p>
             </div>
         )}
 
