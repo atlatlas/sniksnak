@@ -2,8 +2,8 @@ backend:
   name: github
   repo: atlatlas/sniksnak
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  auth_type: pkce
+  app_id: Ov23liP2cZT5z3n1W0Yb
 
 media_folder: public/images
 public_folder: /images
