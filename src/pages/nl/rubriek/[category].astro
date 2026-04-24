@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
-import { t, type Locale } from '../../i18n/translations';
+import { t, type Locale } from '../../../i18n/translations';
 
-const locale: Locale = 'en';
+const locale: Locale = 'nl';
 const strings = t(locale);
 
 const categoryLabels: Record<string, string> = {
-    binnenland: 'Domestic', buitenland: 'World', tech: 'Tech', sport: 'Sports', column: 'Column',
+    binnenland: 'Binnenland', buitenland: 'Buitenland', tech: 'Tech', sport: 'Sport', column: 'Column',
 };
 
 export async function getStaticPaths() {
@@ -21,14 +21,14 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const label = categoryLabels[category!] || category;
 
-const allArticles = await getCollection('articles', ({ data }) => !data.lang || data.lang === 'en');
+const allArticles = await getCollection('articles', ({ data }) => data.lang === 'nl');
 const articles = allArticles
     .filter(a => a.data.category === category)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title={label}>
-    <Header slot="header" locale={locale} currentPath={`/rubriek/${category}`} />
+    <Header slot="header" locale={locale} currentPath={`/nl/rubriek/${category}`} />
 
     <div style="max-width:1200px;margin:0 auto;padding:32px 24px 60px">
         <div class="category-header">

@@ -1,9 +1,13 @@
 ---
+import { t, type Locale } from '../i18n/translations';
+
 interface Props {
     headlines: string[];
+    locale: Locale;
 }
 
-const { headlines } = Astro.props;
+const { headlines, locale } = Astro.props;
+const strings = t(locale);
 ---
 
 <div class="ticker">
@@ -18,7 +22,7 @@ const { headlines } = Astro.props;
         </div>
     ) : (
         <div class="ticker-content ticker-empty">
-            Nog geen nieuws. Voeg je eerste artikel toe via de beheerpaneel.
+            {strings.ticker.empty}
         </div>
     )}
 </div>

@@ -1,27 +1,37 @@
 ---
+import { t, type Locale } from '../i18n/translations';
+
+interface Props {
+    locale: Locale;
+}
+
+const { locale } = Astro.props;
+const strings = t(locale);
+const prefix = locale === 'en' ? '' : '/nl';
+
 const categories = [
     {
         key: 'binnenland',
-        label: 'Binnenland',
-        description: 'Waar het echt gebeurt. Nou ja, min of meer.',
+        label: strings.categories.domestic.label,
+        description: strings.categories.domestic.desc,
         color: 'binnenland',
     },
     {
         key: 'buitenland',
-        label: 'Buitenland',
-        description: 'De rest van de wereld, maar dan grappig.',
+        label: strings.categories.world.label,
+        description: strings.categories.world.desc,
         color: 'buitenland',
     },
     {
         key: 'tech',
-        label: 'Tech',
-        description: 'Appeltjes-eitjes, maar dan met sarcasme.',
+        label: strings.categories.tech.label,
+        description: strings.categories.tech.desc,
         color: 'tech',
     },
     {
         key: 'sport',
-        label: 'Sport',
-        description: 'Verliezen was nog nooit zo vermakelijk.',
+        label: strings.categories.sports.label,
+        description: strings.categories.sports.desc,
         color: 'sport',
     },
 ];
@@ -29,11 +39,11 @@ const categories = [
 
 <section class="categories-section">
     <div class="section-header">
-        <h2>Rubrieken</h2>
+        <h2>{strings.categories.title}</h2>
     </div>
     <div class="categories-grid">
         {categories.map(c => (
-            <a href={`/rubriek/${c.key}`} class={`category-card category-card-${c.color}`}>
+            <a href={`${prefix}/rubriek/${c.key}`} class={`category-card category-card-${c.color}`}>
                 <div class="category-card-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                         {c.key === 'binnenland' && <><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>}

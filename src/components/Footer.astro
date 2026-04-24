@@ -1,46 +1,50 @@
 ---
-const categories = [
-    { label: 'Binnenland', href: '/rubriek/binnenland' },
-    { label: 'Buitenland', href: '/rubriek/buitenland' },
-    { label: 'Tech', href: '/rubriek/tech' },
-    { label: 'Sport', href: '/rubriek/sport' },
-    { label: 'Column', href: '/rubriek/column' },
-];
+import { t, type Locale } from '../i18n/translations';
+
+interface Props {
+    locale: Locale;
+}
+
+const { locale } = Astro.props;
+const strings = t(locale);
+const prefix = locale === 'en' ? '' : '/nl';
 ---
 
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">
             <div class="logo">
-                <a href="/">
+                <a href={locale === 'en' ? '/' : '/nl/'}>
                     <span class="logo-icon">S</span>
                     <span class="logo-text">SNIKSNAK</span>
                 </a>
             </div>
-            <p>Nieuws dat je nodig hebt, maar niet verdiend hebt.</p>
+            <p>{strings.footer.tagline}</p>
         </div>
         <div class="footer-links">
             <div class="footer-col">
-                <h4>Rubrieken</h4>
-                {categories.map(c => (
-                    <a href={c.href}>{c.label}</a>
-                ))}
+                <h4>{strings.footer.categories}</h4>
+                <a href={`${prefix}/rubriek/binnenland`}>{strings.nav.domestic}</a>
+                <a href={`${prefix}/rubriek/buitenland`}>{strings.nav.world}</a>
+                <a href={`${prefix}/rubriek/tech`}>{strings.nav.tech}</a>
+                <a href={`${prefix}/rubriek/sport`}>{strings.nav.sports}</a>
+                <a href={`${prefix}/rubriek/column`}>{strings.nav.column}</a>
             </div>
             <div class="footer-col">
-                <h4>Over ons</h4>
-                <a href="#">Redactie</a>
-                <a href="#">Contact</a>
-                <a href="#">Adverteren</a>
+                <h4>{strings.footer.aboutUs}</h4>
+                <a href="#">{strings.footer.editorial}</a>
+                <a href="#">{strings.footer.contact}</a>
+                <a href="#">{strings.footer.advertise}</a>
             </div>
             <div class="footer-col">
-                <h4>Legaal</h4>
-                <a href="#">Privacy</a>
-                <a href="#">Voorwaarden</a>
-                <a href="#">Cookies</a>
+                <h4>{strings.footer.legal}</h4>
+                <a href="#">{strings.footer.privacy}</a>
+                <a href="#">{strings.footer.terms}</a>
+                <a href="#">{strings.footer.cookies}</a>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Sniksnak. Alle rechten voorbehouden. Gebruikersrechten verboden.</p>
+        <p>&copy; {new Date().getFullYear()} Sniksnak. {strings.footer.copyright}</p>
     </div>
 </footer>

@@ -1,4 +1,6 @@
 ---
+import { t, type Locale } from '../i18n/translations';
+
 interface Article {
     title: string;
     slug: string;
@@ -6,49 +8,50 @@ interface Article {
 
 interface Props {
     recentArticles: Article[];
+    locale: Locale;
 }
 
-const { recentArticles } = Astro.props;
+const { recentArticles, locale } = Astro.props;
+const strings = t(locale);
+const prefix = locale === 'en' ? '' : '/nl';
 ---
 
 <aside class="sidebar">
     <div class="sidebar-section">
-        <h3 class="sidebar-title">Trending</h3>
+        <h3 class="sidebar-title">{strings.sidebar.trending}</h3>
         {recentArticles.length > 0 ? (
             <ol class="trending-list">
                 {recentArticles.slice(0, 5).map(a => (
-                    <li><a href={`/artikels/${a.slug}`}>{a.title}</a></li>
+                    <li><a href={`${prefix}/artikels/${a.slug}`}>{a.title}</a></li>
                 ))}
             </ol>
         ) : (
-            <p class="trending-empty">Nog geen artikelen.</p>
+            <p class="trending-empty">{strings.sidebar.trendingEmpty}</p>
         )}
     </div>
 
     <div class="sidebar-section newsletter-box">
-        <h3 class="sidebar-title">Blijf op de hoogte</h3>
-        <p>Elke vrijdag het beste sarcasme in je inbox. Geen spam, beloofd.</p>
+        <h3 class="sidebar-title">{strings.sidebar.newsletterTitle}</h3>
+        <p>{strings.sidebar.newsletterDesc}</p>
         <form class="newsletter-form" id="newsletterForm">
-            <input type="email" placeholder="jouw@email.nl" required>
-            <button type="submit">Aanmelden</button>
+            <input type="email" placeholder={strings.sidebar.newsletterPlaceholder} required>
+            <button type="submit">{strings.sidebar.newsletterButton}</button>
         </form>
-        <p class="newsletter-note">Afmelden kan altijd. Je hebt waarschijnlijk toch niets beters te doen.</p>
+        <p class="newsletter-note">{strings.sidebar.newsletterNote}</p>
     </div>
 
     <div class="sidebar-section quote-box">
-        <blockquote>
-            "Ik lees niet omdat ik het leuk vind. Ik lees omdat ik op de trein zit en geen bereik heb."
-        </blockquote>
-        <cite>&mdash; Echte Nederlander</cite>
+        <blockquote>{strings.sidebar.quote}</blockquote>
+        <cite>{strings.sidebar.quoteAuthor}</cite>
     </div>
 </aside>
 
-<script>
+<script define:vars={{ subscribedMsg: strings.toast.subscribed }}>
     document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
-        const input = (e.target as HTMLFormElement).querySelector('input');
+        const input = e.target.querySelector('input');
         if (input && input.value) {
-            (window as any).showToast('Je bent aangemeld! Bereid je voor op de waarheid.');
+            window.showToast(subscribedMsg);
             input.value = '';
         }
     });

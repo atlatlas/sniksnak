@@ -1,26 +1,26 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
 import { getCollection, render } from 'astro:content';
-import { t, type Locale } from '../../i18n/translations';
+import { t, type Locale } from '../../../i18n/translations';
 
 export async function getStaticPaths() {
-    const articles = await getCollection('articles', ({ data }) => !data.lang || data.lang === 'en');
+    const articles = await getCollection('articles', ({ data }) => data.lang === 'nl');
     return articles.map(article => ({
         params: { slug: article.slug },
         props: { article },
     }));
 }
 
-const locale: Locale = 'en';
+const locale: Locale = 'nl';
 const strings = t(locale);
 const { article } = Astro.props;
 const { Content } = await render(article);
 const { title, category, date, author, excerpt, image, readTime } = article.data;
 
 const categoryLabels: Record<string, string> = {
-    binnenland: 'Domestic', buitenland: 'World', tech: 'Tech', sport: 'Sports', column: 'Column',
+    binnenland: 'Binnenland', buitenland: 'Buitenland', tech: 'Tech', sport: 'Sport', column: 'Column',
 };
 
 const formattedDate = date.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
@@ -28,17 +28,17 @@ const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0
 ---
 
 <BaseLayout title={title} description={excerpt}>
-    <Header slot="header" locale={locale} currentPath={`/artikels/${article.slug}`} />
+    <Header slot="header" locale={locale} currentPath={`/nl/artikels/${article.slug}`} />
 
     <div class="article-detail">
-        <a href="/" class="back-link">
+        <a href="/nl/" class="back-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             {strings.articles.backToHome}
         </a>
 
         <header class="article-detail-header">
             <div class="article-meta">
-                <a href={`/rubriek/${category}`} class={`category-tag-inline tag-${category}`}>
+                <a href={`/nl/rubriek/${category}`} class={`category-tag-inline tag-${category}`}>
                     {categoryLabels[category] || category}
                 </a>
                 <time datetime={date.toISOString()}>{formattedDate}</time>

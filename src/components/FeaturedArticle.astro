@@ -1,4 +1,6 @@
 ---
+import { t, type Locale } from '../i18n/translations';
+
 interface Props {
     title: string;
     slug: string;
@@ -8,24 +10,25 @@ interface Props {
     excerpt: string;
     image?: string;
     readTime?: number;
+    locale: Locale;
 }
 
-const { title, slug, category, date, author, excerpt, image, readTime } = Astro.props;
+const { title, slug, category, date, author, excerpt, image, readTime, locale } = Astro.props;
+const strings = t(locale);
 
-const categoryLabels: Record<string, string> = {
-    binnenland: 'Binnenland',
-    buitenland: 'Buitenland',
-    tech: 'Tech',
-    sport: 'Sport',
-    column: 'Column',
+const categoryLabels: Record<string, Record<string, string>> = {
+    en: { binnenland: 'Domestic', buitenland: 'World', tech: 'Tech', sport: 'Sports', column: 'Column' },
+    nl: { binnenland: 'Binnenland', buitenland: 'Buitenland', tech: 'Tech', sport: 'Sport', column: 'Column' },
 };
 
-const formattedDate = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+const prefix = locale === 'en' ? '' : '/nl';
+const formattedDate = date.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+const categoryLabel = categoryLabels[locale]?.[category] || category;
 ---
 
 <article class="featured-article">
-    <a href={`/artikels/${slug}`} class="featured-image">
+    <a href={`${prefix}/artikels/${slug}`} class="featured-image">
         {image ? (
             <img src={image} alt={title} loading="lazy" />
         ) : (
@@ -33,14 +36,14 @@ const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0
                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             </div>
         )}
-        <span class={`category-tag tag-${category}`}>{categoryLabels[category] || category}</span>
+        <span class={`category-tag tag-${category}`}>{categoryLabel}</span>
     </a>
     <div class="featured-content">
         <div class="article-meta">
             <time datetime={date.toISOString()}>{formattedDate}</time>
-            {readTime && <span class="read-time">{readTime} min lezen</span>}
+            {readTime && <span class="read-time">{readTime} {strings.featured.readTime}</span>}
         </div>
-        <h1><a href={`/artikels/${slug}`}>{title}</a></h1>
+        <h1><a href={`${prefix}/artikels/${slug}`}>{title}</a></h1>
         <p class="featured-excerpt">{excerpt}</p>
         <div class="author">
             <div class="author-avatar">{initials}</div>

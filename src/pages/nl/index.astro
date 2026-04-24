@@ -1,20 +1,20 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Ticker from '../components/Ticker.astro';
-import FeaturedArticle from '../components/FeaturedArticle.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import Sidebar from '../components/Sidebar.astro';
-import CategoryCards from '../components/CategoryCards.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Ticker from '../../components/Ticker.astro';
+import FeaturedArticle from '../../components/FeaturedArticle.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import CategoryCards from '../../components/CategoryCards.astro';
 import { getCollection } from 'astro:content';
-import { t, type Locale } from '../i18n/translations';
+import { t, type Locale } from '../../i18n/translations';
 
-const locale: Locale = 'en';
+const locale: Locale = 'nl';
 const strings = t(locale);
-const currentPath = '/';
+const currentPath = '/nl/';
 
-const allArticles = await getCollection('articles', ({ data }) => !data.lang || data.lang === 'en');
+const allArticles = await getCollection('articles', ({ data }) => data.lang === 'nl');
 const sorted = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const featured = sorted.find(a => a.data.featured) || sorted[0];
