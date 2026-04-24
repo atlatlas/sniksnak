@@ -2,6 +2,8 @@ backend:
   name: github
   repo: atlatlas/sniksnak
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 media_folder: public/images
 public_folder: /images
@@ -35,6 +37,6 @@ collections:
         widget: image
         required: false
         hint: Optioneel. Upload een afbeelding of voeg een URL in.
-      - { name: featured, label: Uitgelicht (voorpagina hero)", widget: boolean, default: false }
-      - { name: readTime, label: Leestijd (minuten)", widget: number, required: false, value_type: int, min: 1, max: 30 }
+      - { name: featured, label: "Uitgelicht (voorpagina hero)", widget: boolean, default: false }
+      - { name: readTime, label: "Leestijd (minuten)", widget: number, required: false, value_type: int, min: 1, max: 30 }
       - { name: body, label: Artikeltekst, widget: markdown }
