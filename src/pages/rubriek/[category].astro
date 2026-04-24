@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const categoryLabels: Record<string, string> = {
+    binnenland: 'Binnenland',
+    buitenland: 'Buitenland',
+    tech: 'Tech',
+    sport: 'Sport',
+    column: 'Column',
+};
+
+export async function getStaticPaths() {
+    const categories = ['binnenland', 'buitenland', 'tech', 'sport', 'column'];
+    return categories.map(cat => ({ params: { category: cat } }));
+}
+
+const { category } = Astro.params;
+const label = categoryLabels[category!] || category;
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+    .filter(a => a.data.category === category)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title={label}>
+    <Header slot="header" />
+
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px 60px">
+        <div class="category-header">
+            <h1>{label}</h1>
+            <p>{articles.length} {articles.length === 1 ? 'artikel' : 'artikelen'}</p>
+        </div>
+
+        {articles.length > 0 ? (
+            <div class="category-articles">
+                <div class="articles-grid">
+                    {articles.map(article => (
+                        <ArticleCard
+                            title={article.data.title}
+                            slug={article.slug}
+                            category={article.data.category}
+                            date={article.data.date}
+                            excerpt={article.data.excerpt}
+                            image={article.data.image}
+                            readTime={article.data.readTime}
+                        />
+                    ))}
+                </div>
+            </div>
+        ) : (
+            <div class="empty-state">
+                <h2>Nog geen {label.toLowerCase()} artikelen</h2>
+                <p>Voeg een artikel toe via het beheerpaneel op <a href="/admin/">/admin</a></p>
+            </div>
+        )}
+    </div>
+
+    <Footer slot="footer" />
+</BaseLayout>

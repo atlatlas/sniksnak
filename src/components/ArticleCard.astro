@@ -1,0 +1,45 @@
+---
+interface Props {
+    title: string;
+    slug: string;
+    category: string;
+    date: Date;
+    excerpt: string;
+    image?: string;
+    readTime?: number;
+    large?: boolean;
+}
+
+const { title, slug, category, date, excerpt, image, readTime, large = false } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+    binnenland: 'Binnenland',
+    buitenland: 'Buitenland',
+    tech: 'Tech',
+    sport: 'Sport',
+    column: 'Column',
+};
+
+const formattedDate = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<article class:list={['card', { 'card-large': large }]}>
+    <a href={`/artikels/${slug}`} class="card-image" class:list={[{ 'card-image-sm': !large }]}>
+        {image ? (
+            <img src={image} alt={title} loading="lazy" />
+        ) : (
+            <div class="placeholder-img" style="color:rgba(255,255,255,0.15)">
+                <svg width={large ? 40 : 32} height={large ? 40 : 32} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            </div>
+        )}
+        <span class={`category-tag tag-${category}`}>{categoryLabels[category] || category}</span>
+    </a>
+    <div class="card-body">
+        <div class="article-meta">
+            <time datetime={date.toISOString()}>{formattedDate}</time>
+            {readTime && <span class="read-time">{readTime} min</span>}
+        </div>
+        <h3><a href={`/artikels/${slug}`}>{title}</a></h3>
+        <p>{excerpt}</p>
+    </div>
+</article>

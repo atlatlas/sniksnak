@@ -1,0 +1,50 @@
+---
+const categories = [
+    {
+        key: 'binnenland',
+        label: 'Binnenland',
+        description: 'Waar het echt gebeurt. Nou ja, min of meer.',
+        color: 'binnenland',
+    },
+    {
+        key: 'buitenland',
+        label: 'Buitenland',
+        description: 'De rest van de wereld, maar dan grappig.',
+        color: 'buitenland',
+    },
+    {
+        key: 'tech',
+        label: 'Tech',
+        description: 'Appeltjes-eitjes, maar dan met sarcasme.',
+        color: 'tech',
+    },
+    {
+        key: 'sport',
+        label: 'Sport',
+        description: 'Verliezen was nog nooit zo vermakelijk.',
+        color: 'sport',
+    },
+];
+---
+
+<section class="categories-section">
+    <div class="section-header">
+        <h2>Rubrieken</h2>
+    </div>
+    <div class="categories-grid">
+        {categories.map(c => (
+            <a href={`/rubriek/${c.key}`} class={`category-card category-card-${c.color}`}>
+                <div class="category-card-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                        {c.key === 'binnenland' && <><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>}
+                        {c.key === 'buitenland' && <><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></>}
+                        {c.key === 'tech' && <><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>}
+                        {c.key === 'sport' && <><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20"/><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77"/></>}
+                    </svg>
+                </div>
+                <h3>{c.label}</h3>
+                <p>{c.description}</p>
+            </a>
+        ))}
+    </div>
+</section>

@@ -1,0 +1,24 @@
+---
+interface Props {
+    headlines: string[];
+}
+
+const { headlines } = Astro.props;
+---
+
+<div class="ticker">
+    {headlines.length > 0 ? (
+        <div class="ticker-content">
+            {headlines.map((h, i) => (
+                <>
+                    <span class="ticker-item">{h}</span>
+                    {i < headlines.length - 1 && <span class="ticker-dot">&bull;</span>}
+                </>
+            ))}
+        </div>
+    ) : (
+        <div class="ticker-content ticker-empty">
+            Nog geen nieuws. Voeg je eerste artikel toe via de beheerpaneel.
+        </div>
+    )}
+</div>

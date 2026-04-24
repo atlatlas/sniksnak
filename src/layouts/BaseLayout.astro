@@ -1,0 +1,80 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Nieuws dat je nodig hebt, maar niet verdiend hebt.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} — SNIKSNAK</title>
+    <meta name="description" content={description}>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+    <slot name="header" />
+    <main>
+        <slot />
+    </main>
+    <slot name="footer" />
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('mobileMenuToggle');
+        const overlay = document.getElementById('mobileNavOverlay');
+        menuBtn?.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            overlay?.classList.toggle('open');
+            document.body.style.overflow = overlay?.classList.contains('open') ? 'hidden' : '';
+        });
+        overlay?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn?.classList.remove('active');
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Toast
+        (window as any).showToast = (message: string) => {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 3000);
+        };
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.card, .category-card, .sidebar-section').forEach((el, i) => {
+            (el as HTMLElement).style.opacity = '0';
+            (el as HTMLElement).style.transform = 'translateY(20px)';
+            (el as HTMLElement).style.transition = `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
+<style is:global>
+    @import '../styles/global.css';
+</style>

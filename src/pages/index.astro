@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Ticker from '../components/Ticker.astro';
+import FeaturedArticle from '../components/FeaturedArticle.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import Sidebar from '../components/Sidebar.astro';
+import CategoryCards from '../components/CategoryCards.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const sorted = allArticles
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featured = sorted.find(a => a.data.featured) || sorted[0];
+const remaining = featured
+    ? sorted.filter(a => a.slug !== featured.slug)
+    : sorted;
+
+const tickerHeadlines = sorted.slice(0, 3).map(a => a.data.title);
+const trendingArticles = sorted.slice(0, 5).map(a => ({
+    title: a.data.title,
+    slug: a.slug,
+}));
+---
+
+<BaseLayout title="SNIKSNAK">
+    <Header slot="header" />
+
+    <div style="max-width:1200px;margin:0 auto;padding:32px 24px 60px">
+        {featured ? (
+            <Ticker headlines={tickerHeadlines} />
+        ) : (
+            <div class="ticker">
+                <div class="ticker-content ticker-empty">
+                    Nog geen nieuws. Voeg je eerste artikel toe via het beheerpaneel.
+                </div>
+            </div>
+        )}
+
+        {featured ? (
+            <section class="featured">
+                <FeaturedArticle
+                    title={featured.data.title}
+                    slug={featured.slug}
+                    category={featured.data.category}
+                    date={featured.data.date}
+                    author={featured.data.author}
+                    excerpt={featured.data.excerpt}
+                    image={featured.data.image}
+                    readTime={featured.data.readTime}
+                />
+            </section>
+        ) : (
+            <div class="empty-state">
+                <h2>Nog geen artikelen</h2>
+                <p>Voeg je eerste sarcastische nieuwsbericht toe via het beheerpaneel op <a href="/admin/">/admin</a></p>
+            </div>
+        )}
+
+        {remaining.length > 0 && (
+            <div class="content-grid">
+                <section class="articles">
+                    <div class="section-header">
+                        <h2>Vers van de pers</h2>
+                        <a href="#" class="see-all">Alles bekijken &rarr;</a>
+                    </div>
+                    <div class="articles-grid">
+                        {remaining.map((article, i) => (
+                            <ArticleCard
+                                title={article.data.title}
+                                slug={article.slug}
+                                category={article.data.category}
+                                date={article.data.date}
+                                excerpt={article.data.excerpt}
+                                image={article.data.image}
+                                readTime={article.data.readTime}
+                                large={i === 0 || i === remaining.length - 1}
+                            />
+                        ))}
+                    </div>
+                </section>
+
+                <Sidebar recentArticles={trendingArticles} />
+            </div>
+        )}
+
+        <CategoryCards />
+    </div>
+
+    <Footer slot="footer" />
+</BaseLayout>

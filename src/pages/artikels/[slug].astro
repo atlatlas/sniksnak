@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+    const articles = await getCollection('articles');
+    return articles.map(article => ({
+        params: { slug: article.slug },
+        props: { article },
+    }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const { title, category, date, author, excerpt, image, readTime } = article.data;
+
+const categoryLabels: Record<string, string> = {
+    binnenland: 'Binnenland',
+    buitenland: 'Buitenland',
+    tech: 'Tech',
+    sport: 'Sport',
+    column: 'Column',
+};
+
+const formattedDate = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+---
+
+<BaseLayout title={title} description={excerpt}>
+    <Header slot="header" />
+
+    <div class="article-detail">
+        <a href="/" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Terug naar voorpagina
+        </a>
+
+        <header class="article-detail-header">
+            <div class="article-meta">
+                <a href={`/rubriek/${category}`} class={`category-tag-inline tag-${category}`}>
+                    {categoryLabels[category] || category}
+                </a>
+                <time datetime={date.toISOString()}>{formattedDate}</time>
+                {readTime && <span class="read-time">{readTime} min lezen</span>}
+            </div>
+            <h1>{title}</h1>
+            <div class="author">
+                <div class="author-avatar">{initials}</div>
+                <span>{author}</span>
+            </div>
+        </header>
+
+        {image ? (
+            <div class="article-detail-hero">
+                <img src={image} alt={title} />
+            </div>
+        ) : null}
+
+        <div class="article-detail-content">
+            <Content />
+        </div>
+    </div>
+
+    <Footer slot="footer" />
+</BaseLayout>
