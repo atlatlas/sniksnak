@@ -8,6 +8,8 @@ on:
       - 'src/**'
       - 'public/**'
       - '.github/workflows/deploy.yml'
+      - 'astro.config.*'
+      - 'package.json'
   workflow_dispatch:
 
 permissions:
