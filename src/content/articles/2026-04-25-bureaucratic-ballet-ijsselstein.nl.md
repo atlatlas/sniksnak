@@ -1,5 +1,5 @@
 ---
-title: Het bureaucratische ballet van IJsselstein: hoe een voetbalveld een thuis werd
+title: "Het bureaucratische ballet van IJsselstein: hoe een voetbalveld een thuis werd"
 category: column
 lang: nl
 date: 2026-04-25

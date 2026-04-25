@@ -83,7 +83,7 @@ async function main() {
 
       const nlContent = [
         '---',
-        ...Object.entries(nlFrontmatter).map(([k, v]) => `${k}: ${v}`),
+        ...Object.entries(nlFrontmatter).map(([k, v]) => /[:"']/.test(v) ? `${k}: "${v.replace(/"/g, '\\"')}"` : `${k}: ${v}`),
         '---',
         '',
         nlBody,
