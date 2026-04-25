@@ -9,6 +9,12 @@ featured: false
 readTime: 3
 ---
 
-Write your article content here in **markdown**.
+Write your lead paragraph here. It sets the scene and has no heading.
 
-Use `**bold**`, `*italic*`, and standard markdown formatting.
+## First Section Heading
+
+Every 2-3 paragraphs, use an **## h2 heading** to introduce a new angle or scene.
+
+**Bold** names, key phrases, ironic terms, and important details. Use *italic* for emphasis, foreign words, or inner thoughts. Keep paragraphs short — 2-4 sentences max.
+
+> Use blockquotes for direct quotes or punchlines. They render with an accent border on the article page.
