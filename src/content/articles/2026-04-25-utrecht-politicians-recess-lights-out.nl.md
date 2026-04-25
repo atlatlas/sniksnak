@@ -7,6 +7,7 @@ author: The Observer
 excerpt: "Een studie over hoe je de toekomst van een stad onderhandelt terwijl je negeert dat deze geen stroom heeft."
 featured: true
 readTime: 3
+image: /images/Utrecht-Politicians-Take-a-Recess-While-The-Lights-Go-Out.png
 ---
 
 In de rustige hoekjes van Utrecht, waar de airco zoemt en de koffie altijd warm is, zijn vier politieke partijen bijeengekomen om te beslissen wie de touwtjes in handen krijgt. Ze noemen het „onderhandelingen“, maar het lijkt meer op een beleefde patstelling tussen mensen die huizen willen bouwen in een stad die vergeten is hoe ze die op het elektriciteitsnet moeten aansluiten.

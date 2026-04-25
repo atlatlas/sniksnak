@@ -7,6 +7,7 @@ author: The Observer
 excerpt: "A study in how to negotiate a city's future while ignoring the fact that it has no power."
 featured: true
 readTime: 3
+image: /images/Utrecht-Politicians-Take-a-Recess-While-The-Lights-Go-Out.png
 ---
 
 In the quiet corners of Utrecht, where the air conditioning hums and the coffee is always hot, four political parties have gathered to decide who will run the show. They call it "negotiations," but it looks more like a polite standoff between people who want to build houses in a city that has forgotten how to plug them in.
