@@ -5,7 +5,7 @@ lang: en
 date: 2026-04-25
 author: The Observer
 excerpt: "When the people who decide things meet the people who actually live there, fireworks are inevitable."
-featured: true
+featured: false
 readTime: 3
 image: "/images/bureaucratic-ballet-ijsselstein.png"
 ---
