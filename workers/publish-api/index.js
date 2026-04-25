@@ -1,6 +1,6 @@
 const REPO = 'atlatas/sniksnak';
 const PASSWORD = 'sniksnak';
-const TOKEN = '
+const TOKEN = process.env.GITHUB_TOKEN || '';
 
 export default {
   async fetch(request) {
