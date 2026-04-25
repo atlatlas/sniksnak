@@ -11,7 +11,6 @@ const translations = {
   en: {
     nav: {
       home: 'Homepage',
-      write: 'Write',
       domestic: 'Domestic',
       world: 'World',
       tech: 'Tech',
@@ -80,7 +79,6 @@ const translations = {
   nl: {
     nav: {
       home: 'Voorpagina',
-      write: 'Schrijven',
       domestic: 'Binnenland',
       world: 'Buitenland',
       tech: 'Tech',

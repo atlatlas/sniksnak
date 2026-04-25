@@ -12,10 +12,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   translate-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,8 +48,8 @@ jobs:
             git push
           fi
       - run: npm run build
-      - uses: cloudflare/wrangler-action@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 9b16a5377c884a7e41ea64ec3f425503
-          command: pages deploy dist --project-name=sniksnak --branch=main
+          path: dist
+      - id: deploy
+        uses: actions/deploy-pages@v4
