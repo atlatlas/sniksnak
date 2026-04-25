@@ -9,24 +9,26 @@ interface Props {
 const { locale, currentPath } = Astro.props;
 const strings = t(locale);
 const otherLocale = locale === 'en' ? 'nl' : 'en';
-const switchPath = switchLocalePath(currentPath, otherLocale, locale);
+const base = import.meta.env.BASE_URL;
+const prefix = `${base}${locale === 'en' ? '' : 'nl/'}`;
+const switchPath = `${base}${switchLocalePath(currentPath, otherLocale, locale).replace(/^\//, '')}`;
 ---
 
 <header class="site-header">
     <div class="header-inner">
         <div class="logo">
-            <a href={locale === 'en' ? '/' : '/nl/'}>
+            <a href={prefix}>
                 <span class="logo-icon">S</span>
                 <span class="logo-text">SNIKSNAK</span>
             </a>
         </div>
         <nav class="desktop-nav">
-            <a href={locale === 'en' ? '/' : '/nl/'} class="nav-link">{strings.nav.home}</a>
-            <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/binnenland`} class="nav-link">{strings.nav.domestic}</a>
-            <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/buitenland`} class="nav-link">{strings.nav.world}</a>
-            <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/tech`} class="nav-link">{strings.nav.tech}</a>
-            <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/sport`} class="nav-link">{strings.nav.sports}</a>
-            <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/column`} class="nav-link">{strings.nav.column}</a>
+            <a href={prefix} class="nav-link">{strings.nav.home}</a>
+            <a href={`${prefix}rubriek/binnenland`} class="nav-link">{strings.nav.domestic}</a>
+            <a href={`${prefix}rubriek/buitenland`} class="nav-link">{strings.nav.world}</a>
+            <a href={`${prefix}rubriek/tech`} class="nav-link">{strings.nav.tech}</a>
+            <a href={`${prefix}rubriek/sport`} class="nav-link">{strings.nav.sports}</a>
+            <a href={`${prefix}rubriek/column`} class="nav-link">{strings.nav.column}</a>
             <a href={switchPath} class="nav-link" style="opacity:0.6">{locale === 'en' ? 'NL' : 'EN'}</a>
         </nav>
         <div class="header-actions">
@@ -39,12 +41,12 @@ const switchPath = switchLocalePath(currentPath, otherLocale, locale);
 
 <div class="mobile-nav-overlay" id="mobileNavOverlay">
     <nav class="mobile-nav">
-        <a href={locale === 'en' ? '/' : '/nl/'} class="mobile-nav-link">{strings.nav.home}</a>
-        <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/binnenland`} class="mobile-nav-link">{strings.nav.domestic}</a>
-        <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/buitenland`} class="mobile-nav-link">{strings.nav.world}</a>
-        <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/tech`} class="mobile-nav-link">{strings.nav.tech}</a>
-        <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/sport`} class="mobile-nav-link">{strings.nav.sports}</a>
-        <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/column`} class="mobile-nav-link">{strings.nav.column}</a>
+        <a href={prefix} class="mobile-nav-link">{strings.nav.home}</a>
+        <a href={`${prefix}rubriek/binnenland`} class="mobile-nav-link">{strings.nav.domestic}</a>
+        <a href={`${prefix}rubriek/buitenland`} class="mobile-nav-link">{strings.nav.world}</a>
+        <a href={`${prefix}rubriek/tech`} class="mobile-nav-link">{strings.nav.tech}</a>
+        <a href={`${prefix}rubriek/sport`} class="mobile-nav-link">{strings.nav.sports}</a>
+        <a href={`${prefix}rubriek/column`} class="mobile-nav-link">{strings.nav.column}</a>
         <a href={switchPath} class="mobile-nav-link" style="opacity:0.6">{locale === 'en' ? 'NL' : 'EN'}</a>
     </nav>
 </div>

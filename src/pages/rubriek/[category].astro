@@ -56,7 +56,7 @@ const articles = allArticles
         ) : (
             <div class="empty-state">
                 <h2>{strings.categoryPage.empty.replace('{category}', label.toLowerCase())}</h2>
-                <p>{strings.categoryPage.addArticle} <a href="/admin/">/admin</a></p>
+                <p>{strings.categoryPage.addArticle} <a href={`${import.meta.env.BASE_URL}admin/`}>/admin</a></p>
             </div>
         )}
     </div>

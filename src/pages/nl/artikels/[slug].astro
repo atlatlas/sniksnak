@@ -26,6 +26,7 @@ export async function getStaticPaths() {
 
 const locale: Locale = 'nl';
 const strings = t(locale);
+const base = import.meta.env.BASE_URL;
 const { article, enSlug } = Astro.props;
 const { Content } = await render(article);
 const { title, category, date, author, excerpt, image, readTime } = article.data;
@@ -43,12 +44,12 @@ const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0
 
     <div class="article-detail">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-            <a href="/nl/" class="back-link">
+            <a href={`${base}nl/`} class="back-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                 {strings.articles.backToHome}
             </a>
             {enSlug && (
-                <a href={`/artikels/${enSlug}`} class="lang-switch-link">
+                <a href={`${base}artikels/${enSlug}`} class="lang-switch-link">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                     Read in English
                 </a>
@@ -57,7 +58,7 @@ const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0
 
         <header class="article-detail-header">
             <div class="article-meta">
-                <a href={`/nl/rubriek/${category}`} class={`category-tag-inline tag-${category}`}>
+                <a href={`${base}nl/rubriek/${category}`} class={`category-tag-inline tag-${category}`}>
                     {categoryLabels[category] || category}
                 </a>
                 <time datetime={date.toISOString()}>{formattedDate}</time>
@@ -72,7 +73,7 @@ const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0
 
         {image ? (
             <div class="article-detail-hero">
-                <img src={image} alt={title} />
+                <img src={`${base}${image.replace(/^\//, '')}`} alt={title} />
             </div>
         ) : null}
 

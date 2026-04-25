@@ -7,14 +7,15 @@ interface Props {
 
 const { locale } = Astro.props;
 const strings = t(locale);
-const prefix = locale === 'en' ? '' : '/nl';
+const base = import.meta.env.BASE_URL;
+const prefix = `${base}${locale === 'en' ? '' : 'nl'}`;
 ---
 
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">
             <div class="logo">
-                <a href={locale === 'en' ? '/' : '/nl/'}>
+                <a href={`${base}${locale === 'en' ? '' : 'nl/'}`}>
                     <span class="logo-icon">S</span>
                     <span class="logo-text">SNIKSNAK</span>
                 </a>
