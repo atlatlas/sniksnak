@@ -1,6 +1,6 @@
 ---
 title: "The Bureaucratic Ballet of IJsselstein: How a Football Pitch Became a Home"
-category: column
+category: binnenland
 lang: en
 date: 2026-04-25
 author: The Observer

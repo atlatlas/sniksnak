@@ -1,6 +1,6 @@
 ---
 title: "Utrecht Politicians Take a Recess While The Lights Go Out"
-category: column
+category: binnenland
 lang: en
 date: 2026-04-25
 author: The Observer
