@@ -17,17 +17,11 @@ const currentPath = '/nl/schrijven';
             <h1>Artikel Schrijven</h1>
             <p class="write-subtitle">Publiceer een nieuw verhaal. Het wordt automatisch naar het Nederlands vertaald.</p>
 
-            <div id="auth-gate" class="auth-gate">
-                <label for="token-input">GitHub token</label>
-                <input type="password" id="token-input" placeholder="ghp_..." />
-                <button id="auth-btn" class="btn btn-primary">Verbinden</button>
-            </div>
-
-            <form id="article-form" class="article-form" style="display:none">
+            <form id="article-form" class="article-form">
                 <div class="form-row">
                     <div class="form-group form-group-wide">
                         <label for="title">Titel</label>
-                        <input type="text" id="title" required placeholder="Jij pakkende kop..." />
+                        <input type="text" id="title" required placeholder="Je pakkende kop..." />
                     </div>
                 </div>
 
@@ -82,6 +76,11 @@ Je openingsalinea komt hier. **Vet** belangrijke namen en termen.
                     </label>
                 </div>
 
+                <div class="form-group">
+                    <label for="password">Wachtwoord</label>
+                    <input type="password" id="password" required placeholder="Je schrijfwachtwoord" />
+                </div>
+
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary btn-large" id="publish-btn">Publiceer Artikel</button>
                     <span id="form-status" class="form-status"></span>
@@ -98,15 +97,7 @@ Je openingsalinea komt hier. **Vet** belangrijke namen en termen.
     .write-container h1 { font-size: 32px; font-weight: 800; margin: 0 0 8px; }
     .write-subtitle { color: var(--color-text-tertiary); margin: 0 0 32px; font-size: 15px; }
 
-    .auth-gate {
-        display: flex; gap: 12px; align-items: flex-end; margin-bottom: 32px;
-        padding: 20px; background: var(--color-bg-secondary, #f8fafc); border-radius: 12px;
-    }
-    .auth-gate label { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-    .auth-gate input { flex: 1; }
-
     .article-form { display: flex; flex-direction: column; gap: 20px; }
-
     .form-row { display: flex; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; flex: 1; }
     .form-group-wide { flex: unset; width: 100%; }
@@ -124,17 +115,13 @@ Je openingsalinea komt hier. **Vet** belangrijke namen en termen.
     }
     .form-group input:focus,
     .form-group select:focus,
-    .form-group textarea:focus {
-        outline: none; border-color: var(--color-accent);
-    }
+    .form-group textarea:focus { outline: none; border-color: var(--color-accent); }
     .form-group textarea {
         resize: vertical; min-height: 300px; line-height: 1.7;
         font-family: 'Inter', ui-monospace, monospace; font-size: 14px;
     }
 
-    .checkbox-label {
-        flex-direction: row !important; align-items: center; gap: 8px; cursor: pointer;
-    }
+    .checkbox-label { flex-direction: row !important; align-items: center; gap: 8px; cursor: pointer; }
     .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--color-accent); }
 
     .form-actions { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
@@ -142,65 +129,29 @@ Je openingsalinea komt hier. **Vet** belangrijke namen en termen.
     .form-status.error { color: #e74c3c; }
     .form-status.success { color: #10b981; }
 
-    .btn {
-        padding: 10px 20px; border: none; border-radius: 8px; font-size: 14px;
-        font-weight: 600; cursor: pointer; transition: opacity 0.2s;
-    }
+    .btn { padding: 10px 20px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
     .btn:hover { opacity: 0.85; }
     .btn-primary { background: var(--color-accent); color: #fff; }
     .btn-large { padding: 12px 28px; font-size: 16px; }
 
-    @media (max-width: 600px) {
-        .form-row { flex-direction: column; gap: 20px; }
-        .auth-gate { flex-direction: column; align-items: stretch; }
-    }
+    @media (max-width: 600px) { .form-row { flex-direction: column; gap: 20px; } }
 </style>
 
 <script>
-const REPO = 'atlatas/sniksnak';
-const TOKEN_KEY = 'sniksnak_gh_token';
+const API = 'https://sniksnak-publish.henkesvensson.workers.dev';
 
-const tokenInput = document.getElementById('token-input') as HTMLInputElement;
-const authBtn = document.getElementById('auth-btn') as HTMLButtonElement;
-const authGate = document.getElementById('auth-gate')!;
 const form = document.getElementById('article-form') as HTMLFormElement;
 const publishBtn = document.getElementById('publish-btn') as HTMLButtonElement;
 const formStatus = document.getElementById('form-status')!;
-
-let token = localStorage.getItem(TOKEN_KEY);
-
-function showForm() {
-    authGate.style.display = 'none';
-    form.style.display = 'flex';
-}
 
 function slugify(title: string): string {
     return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 }
 
-if (token) showForm();
-
-authBtn.addEventListener('click', async () => {
-    token = tokenInput.value.trim();
-    if (!token) return;
-    authBtn.textContent = 'Controleren...';
-    try {
-        const res = await fetch(`https://api.github.com/repos/${REPO}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        });
-        if (!res.ok) throw new Error();
-        localStorage.setItem(TOKEN_KEY, token);
-        showForm();
-    } catch {
-        tokenInput.style.borderColor = '#e74c3c';
-        authBtn.textContent = 'Ongeldig token';
-        setTimeout(() => { authBtn.textContent = 'Verbinden'; tokenInput.style.borderColor = ''; }, 2000);
-    }
-});
-
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!token) return;
+    const password = (document.getElementById('password') as HTMLInputElement).value.trim();
+    if (!password) return;
 
     const title = (document.getElementById('title') as HTMLInputElement).value.trim();
     const category = (document.getElementById('category') as HTMLSelectElement).value;
@@ -210,12 +161,10 @@ form.addEventListener('submit', async (e) => {
     const image = (document.getElementById('image') as HTMLInputElement).value.trim();
     const readTime = (document.getElementById('readTime') as HTMLInputElement).value;
     const featured = (document.getElementById('featured') as HTMLInputElement).checked;
-
     const today = new Date().toISOString().split('T')[0];
-    const slug = `${today}-${slugify(title)}`;
-    const filename = `${slug}.md`;
+    const filename = `${today}-${slugify(title)}.md`;
 
-    const frontmatter = [
+    const markdown = [
         '---',
         `title: "${title.replace(/"/g, '\\"')}"`,
         `category: ${category}`,
@@ -237,25 +186,14 @@ form.addEventListener('submit', async (e) => {
     formStatus.className = 'form-status';
 
     try {
-        const res = await fetch(
-            `https://api.github.com/repos/${REPO}/contents/src/content/articles/${filename}`,
-            {
-                method: 'PUT',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: `Add article: ${title}`,
-                    content: btoa(unescape(encodeURIComponent(frontmatter))),
-                }),
-            }
-        );
+        const res = await fetch(API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password, filename, content: markdown }),
+        });
+        const data = await res.json();
 
-        if (!res.ok) {
-            const err = await res.json();
-            throw new Error(err.message || `GitHub API error ${res.status}`);
-        }
+        if (!res.ok) throw new Error(data.error || `Fout ${res.status}`);
 
         formStatus.textContent = 'Gepubliceerd!';
         formStatus.className = 'form-status success';
@@ -269,7 +207,7 @@ form.addEventListener('submit', async (e) => {
             formStatus.textContent = '';
         }, 3000);
     } catch (err: any) {
-        formStatus.textContent = err.message;
+        formStatus.textContent = err.message || 'Er ging iets mis';
         formStatus.className = 'form-status error';
         publishBtn.textContent = 'Publiceer Artikel';
         publishBtn.disabled = false;
