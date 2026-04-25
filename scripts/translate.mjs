@@ -78,8 +78,7 @@ async function main() {
         body ? deeplTranslate(body) : Promise.resolve(''),
       ]);
 
-      const nlFrontmatter = { ...frontmatter, lang: 'nl', title: nlTitle };
-      delete nlFrontmatter.featured;
+      const nlFrontmatter = { ...frontmatter, lang: 'nl', title: nlTitle, excerpt: nlExcerpt || frontmatter.excerpt };
 
       const nlContent = [
         '---',

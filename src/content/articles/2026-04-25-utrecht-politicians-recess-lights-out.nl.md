@@ -4,7 +4,8 @@ category: column
 lang: nl
 date: 2026-04-25
 author: The Observer
-excerpt: "A study in how to negotiate a city's future while ignoring the fact that it has no power."
+excerpt: "Een studie over hoe je de toekomst van een stad onderhandelt terwijl je negeert dat deze geen stroom heeft."
+featured: true
 readTime: 3
 ---
 

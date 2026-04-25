@@ -17,7 +17,7 @@ const currentPath = '/nl/';
 const allArticles = await getCollection('articles', ({ data }) => data.lang === 'nl');
 const sorted = allArticles
     .filter(a => a.slug !== '_template')
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf() || a.slug.localeCompare(b.slug));
 
 const featured = sorted.find(a => a.data.featured) || sorted[0];
 const remaining = featured ? sorted.filter(a => a.slug !== featured.slug) : sorted;
