@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/contact';
+---
+
+<BaseLayout title="Contact — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Contact</h1>
+            <p class="standfirst">We'd love to hear from you. We probably won't respond, but we'd love to hear from you.</p>
+
+            <div class="content-page-body">
+                <h2>General Inquiries</h2>
+                <p>For general inquiries, please send an email to <strong>hello@sniksnak.nl</strong>. Our response time is currently between 2 and infinity business days, depending on whether we've checked our inbox this month.</p>
+
+                <h2>Submit a Story</h2>
+                <p>Have a tip? A hot take? A mildly amusing observation about Dutch politics? Submit your ideas through our tip line at <strong>tips@sniksnak.nl</strong>. Please note that all submissions become our property, and by sending us an email, you agree to be mocked in a future article if your idea is bad (which it probably is, no offense).</p>
+
+                <h2>Corrections</h2>
+                <p>Found an error in one of our articles? Congratulations, you've found something we already knew about. But if you must, send corrections to <strong>corrections@sniksnak.nl</strong>. We will review your correction, acknowledge it was accurate, and then forget to update the article.</p>
+
+                <h2>Advertising</h2>
+                <p>Want to advertise on SNIKSNAK? See our <a href="/advertise">advertise page</a> for rates and options. Fair warning: our readership is small, our rates are imaginary, and our audience has been described as "people who enjoy being mildly inconvenienced by satire."</p>
+
+                <h2>Legal Threats</h2>
+                <p>For legal threats, please contact our legal department at <strong>legal@sniksnak.nl</strong>. This inbox is monitored by our intern, who is not a lawyer but has watched several seasons of Suits and considers themselves qualified.</p>
+
+                <div class="office-info">
+                    <h2>Our Office</h2>
+                    <p>SNIKSNAK World Headquarters<br>
+                    Somewhere in the Netherlands<br>
+                    The room with the good Wi-Fi<br>
+                    Near the coffee machine</p>
+                    <p>Office hours: By appointment only, and we rarely make appointments.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+    .office-info { background: var(--color-border-light); padding: 24px; border-radius: var(--radius-lg); margin-top: 32px; }
+</style>

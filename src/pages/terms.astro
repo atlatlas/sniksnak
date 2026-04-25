@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/terms';
+---
+
+<BaseLayout title="Terms — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Terms & Conditions</h1>
+            <p class="standfirst">By reading this, you agree to everything below. We know you didn't read it. Neither did we.</p>
+
+            <div class="content-page-body">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing sniksnak.nl, you agree to these terms and conditions. If you do not agree, you are legally required to close this tab, go outside, and reconsider your life choices. We won't judge. Actually, we will, but quietly.</p>
+
+                <h2>2. Content Disclaimer</h2>
+                <p>All content on SNIKSNAK is satirical in nature. Any resemblance to actual news, living persons, or real events is entirely intentional, but should not be taken seriously. If you take our articles seriously, that is a you problem, not a us problem. Side effects of reading SNIKSNAK may include: mild amusement, eye-rolling, and the urge to share an article with someone who will not find it funny.</p>
+
+                <h2>3. Intellectual Property</h2>
+                <p>All content on this website is the property of SNIKSNAK, except for the parts we stole from other websites (just kidding) (mostly). You may share our articles freely, as long as you credit us. You may not reproduce our content for commercial purposes, because frankly, if you think our content has commercial value, we should be talking about a job, not terms and conditions.</p>
+
+                <h2>4. User Conduct</h2>
+                <p>You agree not to use this website for any illegal purpose, including but not limited to: using it as evidence in a court of law, submitting it as a source in an academic paper, or showing it to your grandmother (she will not understand and will worry about you).</p>
+
+                <h2>5. Limitation of Liability</h2>
+                <p>SNIKSNAK is not responsible for any harm caused by reading our content, including but not limited to: confusion, mild irritation, wasted time, or the sudden realization that you could be doing something more productive with your life. Our total liability is capped at the amount you paid to access this site, which is zero euros.</p>
+
+                <h2>6. Governing Law</h2>
+                <p>These terms are governed by the laws of the Netherlands, because that's where we are, and also because Dutch law has a certain charm when applied to satirical news websites. Any disputes will be settled by a coin flip in a neutral location, likely a café in Amsterdam.</p>
+
+                <h2>7. Changes</h2>
+                <p>We reserve the right to change these terms at any time without notice, because we can and because we enjoy the power. Continued use of the website after changes constitutes acceptance, which is the legal equivalent of "I came back so I guess I'm fine with it."</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+</style>

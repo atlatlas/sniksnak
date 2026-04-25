@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/editorial';
+---
+
+<BaseLayout title="Editorial — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Editorial</h1>
+            <p class="standfirst">Where we tell you what to think. You're welcome.</p>
+
+            <div class="content-page-body">
+                <h2>On the State of Modern News</h2>
+                <p>It has come to our attention that some people still read the news for information. This is a fundamental misunderstanding of what news is for. News exists to give you something to talk about at birthday parties, something to be angry about on social media, and something to ignore when you're eating breakfast. We at SNIKSNAK have optimized for all three.</p>
+
+                <h2>On Objectivity</h2>
+                <p>We believe objectivity is overrated. Every news outlet has a bias — ours is just funnier. While other publications pretend to present "the facts" with a straight face, we present the facts with a raised eyebrow, a smirk, and occasionally a slow clap. The information is the same. The delivery is just honest about being human.</p>
+
+                <h2>On Our Editorial Independence</h2>
+                <p>SNIKSNAK is proudly independent, meaning we have no sponsors, no investors, and no revenue. This allows us to write whatever we want, which is both a blessing and a curse, as it means we also have no budget, no office, and no one to blame when things go wrong.</p>
+
+                <h2>On Letters to the Editor</h2>
+                <p>We do not accept letters to the editor, as we have no editor. We do accept letters to The Observer, which will be read, chuckled at, and then deleted within 3 to 7 business days. Form letters are particularly appreciated, as they save us the effort of actually reading them.</p>
+
+                <blockquote>"An editorial page without opinions is just a page." — The Observer</blockquote>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body blockquote { border-left: 3px solid var(--color-accent); padding-left: 20px; margin: 24px 0; font-style: italic; color: var(--color-text-tertiary); font-size: 16px; }
+</style>

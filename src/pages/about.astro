@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/about';
+---
+
+<BaseLayout title="About us — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>About SNIKSNAK</h1>
+            <p class="standfirst">The news you need, but don't deserve. Est. 2026, somewhere in the Netherlands.</p>
+
+            <div class="content-page-body">
+                <p>SNIKSNAK was founded on the simple belief that the news is too serious and the world is too absurd to take either of them seriously. We exist to bridge the gap between what actually happens and what should have happened, with a healthy dose of sarcasm in between.</p>
+
+                <h2>Our Mission</h2>
+                <p>To bring you the news you didn't ask for, presented in a way you didn't know you needed. Every article is carefully crafted to be approximately 73% factual and 27% artistic interpretation, which we've found is the exact ratio that keeps lawyers at bay while still being entertaining.</p>
+
+                <h2>Our Team</h2>
+                <p>We are a small team of one (1) Observer, supported by an editorial board that consists of whoever happened to be in the room when decisions were made. Our fact-checking department is an AI that occasionally reminds us that "not everything needs a punchline." We ignore it.</p>
+
+                <h2>Our Values</h2>
+                <ul>
+                    <li><strong>Sarcasm first.</strong> If you can't laugh at the news, you're reading it wrong.</li>
+                    <li><strong>No source left behind.</strong> Every claim we make is based on at least one real thing that happened. We just might describe it differently.</li>
+                    <li><strong>Impartial mockery.</strong> We mock everyone equally, regardless of political affiliation, nationality, or whether they've ever been nice to us.</li>
+                    <li><strong> deadlines.</strong> We publish when we feel like it, which is usually when the guilt becomes unbearable.</li>
+                </ul>
+
+                <h2>Contact</h2>
+                <p>Have a complaint? Good. Have a compliment? Better. Either way, we're not reading it. But feel free to visit our <a href="/contact">contact page</a> for the illusion of accessibility.</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body ul { margin: 16px 0 24px; padding-left: 24px; }
+    .content-page-body li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 8px; }
+    .content-page-body a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+</style>

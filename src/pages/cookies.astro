@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/cookies';
+---
+
+<BaseLayout title="Cookies — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Cookie Policy</h1>
+            <p class="standfirst">A policy about cookies, written by people who prefer stroopwafels.</p>
+
+            <div class="content-page-body">
+                <h2>What Are Cookies?</h2>
+                <p>Cookies are small text files stored on your device by websites. They are used to remember your preferences, track your behavior, and enable targeted advertising. We think this sounds creepy, which is why we don't use them. We prefer the kind of cookies that come in a tin during the holidays.</p>
+
+                <h2>Our Cookie Usage</h2>
+                <p>We do not set any cookies directly. However, third-party services used by this site (such as Google Fonts) may set cookies. These are their cookies, not our cookies. We take no responsibility for their cookies, just as we take no responsibility for most things.</p>
+
+                <h2>Types of Cookies We Don't Use</h2>
+                <ul>
+                    <li><strong>Essential cookies:</strong> We don't need any. The site works fine without remembering anything about you, just like a bad first date.</li>
+                    <li><strong>Analytics cookies:</strong> We don't track you. Partly out of respect for your privacy, mostly because we don't know how.</li>
+                    <li><strong>Marketing cookies:</strong> We don't advertise, so we don't need marketing cookies. This is the one area where our laziness aligns perfectly with good privacy practices.</li>
+                    <li><strong>Preference cookies:</strong> We have no preferences to save. Your preferences are your own business.</li>
+                </ul>
+
+                <h2>Managing Cookies</h2>
+                <p>You can manage cookies through your browser settings. Since we don't use cookies, there's nothing to manage here, but we appreciate you taking the initiative. We recommend using this time to manage your actual cookie preferences — the edible kind. We suggest speculaas.</p>
+
+                <h2>Contact</h2>
+                <p>If you have questions about cookies, you can email us at <strong>cookies@sniksnak.nl</strong>. Please note that this inbox is checked approximately as often as we check our actual oven for baked goods, which is to say: only when we smell something burning.</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body ul { margin: 16px 0 24px; padding-left: 24px; }
+    .content-page-body li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 8px; }
+</style>

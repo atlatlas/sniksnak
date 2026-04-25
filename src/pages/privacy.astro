@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/privacy';
+---
+
+<BaseLayout title="Privacy — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Privacy Policy</h1>
+            <p class="standfirst">We take your privacy seriously. That's why this policy is longer than most of our articles.</p>
+
+            <div class="content-page-body">
+                <p><em>Last updated: When we remembered we needed one.</em></p>
+
+                <h2>What We Collect</h2>
+                <p>Honestly, not much. We use GitHub Pages, which means whatever GitHub collects, they collect. We collect basically nothing, because we don't have the technical infrastructure to collect anything. We are, in data privacy terms, the digital equivalent of a hermit living in a cave.</p>
+
+                <h2>Cookies</h2>
+                <p>We don't use cookies. If you find a cookie on this site, it wasn't us. It was probably a third-party tracker that we didn't invite and can't get rid of. Think of it like that one relative who shows up uninvited to every family gathering and you just have to accept it.</p>
+
+                <h2>Third Parties</h2>
+                <p>This site is hosted on GitHub Pages and may include Google Fonts. Both of these services have their own privacy policies that are much more comprehensive and much less entertaining than this one. We recommend reading them if you have trouble sleeping.</p>
+
+                <h2>Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Not visit this website</li>
+                    <li>Close this tab at any time</li>
+                    <li>Clear your browser history so nobody knows you were here</li>
+                    <li>Pretend you never read any of this</li>
+                </ul>
+
+                <h2>Data Retention</h2>
+                <p>Any data we accidentally collect will be retained until either someone asks us to delete it or we remember it exists, whichever comes first. Given our track record, it will probably be the latter.</p>
+
+                <h2>Changes to This Policy</h2>
+                <p>We may update this privacy policy from time to time, though we probably won't. If we do, the "Last updated" date will change, which is the only way anyone would ever notice.</p>
+
+                <h2>Contact</h2>
+                <p>For privacy-related inquiries, contact us at <strong>privacy@sniksnak.nl</strong>. Please do not send us your personal data via email, as we will just find it confusing and mildly concerning.</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body ul { margin: 16px 0 24px; padding-left: 24px; }
+    .content-page-body li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 8px; }
+</style>
