@@ -23,6 +23,7 @@ const switchPath = switchLocalePath(currentPath, otherLocale, locale);
         <nav class="desktop-nav">
             <a href={locale === 'en' ? '/' : '/nl/'} class="nav-link">{strings.nav.home}</a>
             <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/binnenland`} class="nav-link">{strings.nav.domestic}</a>
+            <a href={`/${locale === 'en' ? 'write' : 'nl/schrijven'}`} class="nav-link">{strings.nav.write}</a>
             <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/buitenland`} class="nav-link">{strings.nav.world}</a>
             <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/tech`} class="nav-link">{strings.nav.tech}</a>
             <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/sport`} class="nav-link">{strings.nav.sports}</a>
@@ -41,6 +42,7 @@ const switchPath = switchLocalePath(currentPath, otherLocale, locale);
     <nav class="mobile-nav">
         <a href={locale === 'en' ? '/' : '/nl/'} class="mobile-nav-link">{strings.nav.home}</a>
         <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/binnenland`} class="mobile-nav-link">{strings.nav.domestic}</a>
+        <a href={`/${locale === 'en' ? 'write' : 'nl/schrijven'}`} class="mobile-nav-link">{strings.nav.write}</a>
         <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/buitenland`} class="mobile-nav-link">{strings.nav.world}</a>
         <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/tech`} class="mobile-nav-link">{strings.nav.tech}</a>
         <a href={`/${locale === 'en' ? '' : 'nl/'}rubriek/sport`} class="mobile-nav-link">{strings.nav.sports}</a>

@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Locale } from '../i18n/translations';
+
+const locale: Locale = 'en';
+const strings = t(locale);
+const currentPath = '/write';
+---
+
+<BaseLayout title="Write an article — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="write-page">
+        <div class="write-container">
+            <h1>Write an Article</h1>
+            <p class="write-subtitle">Publish a new story. It'll be auto-translated to Dutch.</p>
+
+            <div id="auth-gate" class="auth-gate">
+                <label for="token-input">GitHub token</label>
+                <input type="password" id="token-input" placeholder="ghp_..." />
+                <button id="auth-btn" class="btn btn-primary">Connect</button>
+            </div>
+
+            <form id="article-form" class="article-form" style="display:none">
+                <div class="form-row">
+                    <div class="form-group form-group-wide">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" required placeholder="Your catchy headline..." />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="binnenland">Domestic</option>
+                            <option value="buitenland">World</option>
+                            <option value="tech">Tech</option>
+                            <option value="sport">Sports</option>
+                            <option value="column">Column</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" value="The Observer" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="excerpt">Excerpt</label>
+                    <input type="text" id="excerpt" required placeholder="A one-liner that hooks the reader..." />
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Content <span class="hint">(Markdown — use ## headings, **bold**, > blockquotes)</span></label>
+                    <textarea id="content" rows="16" required placeholder="Write your article here...
+
+## First Section
+
+Your lead paragraph goes here. **Bold** key names and terms.
+
+> Use blockquotes for direct quotes."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="image">Image filename <span class="hint">(optional, e.g. my-image.png)</span></label>
+                        <input type="text" id="image" placeholder="my-article-image.png" />
+                    </div>
+                    <div class="form-group">
+                        <label for="readTime">Read time <span class="hint">(minutes)</span></label>
+                        <input type="number" id="readTime" value="3" min="1" max="30" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="featured" />
+                        Featured (shows as hero on homepage)
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-large" id="publish-btn">Publish Article</button>
+                    <span id="form-status" class="form-status"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .write-page { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+    .write-container h1 { font-size: 32px; font-weight: 800; margin: 0 0 8px; }
+    .write-subtitle { color: var(--color-text-tertiary); margin: 0 0 32px; font-size: 15px; }
+
+    .auth-gate {
+        display: flex; gap: 12px; align-items: flex-end; margin-bottom: 32px;
+        padding: 20px; background: var(--color-bg-secondary); border-radius: 12px;
+    }
+    .auth-gate label { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .auth-gate input { flex: 1; }
+
+    .article-form { display: flex; flex-direction: column; gap: 20px; }
+
+    .form-row { display: flex; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .form-group-wide { flex: unset; width: 100%; }
+
+    .form-group label { font-size: 14px; font-weight: 600; color: var(--color-text); }
+    .form-group .hint { font-weight: 400; color: var(--color-text-tertiary); font-size: 13px; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 14px; border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 8px; font-size: 15px; font-family: inherit;
+        background: var(--color-bg-primary, #fff); color: var(--color-text);
+        transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none; border-color: var(--color-accent);
+    }
+    .form-group textarea {
+        resize: vertical; min-height: 300px; line-height: 1.7;
+        font-family: 'Inter', ui-monospace, monospace; font-size: 14px;
+    }
+
+    .checkbox-label {
+        flex-direction: row !important; align-items: center; gap: 8px; cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--color-accent); }
+
+    .form-actions { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+    .form-status { font-size: 14px; }
+    .form-status.error { color: #e74c3c; }
+    .form-status.success { color: #10b981; }
+
+    .btn {
+        padding: 10px 20px; border: none; border-radius: 8px; font-size: 14px;
+        font-weight: 600; cursor: pointer; transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+    .btn-large { padding: 12px 28px; font-size: 16px; }
+
+    @media (max-width: 600px) {
+        .form-row { flex-direction: column; gap: 20px; }
+        .auth-gate { flex-direction: column; align-items: stretch; }
+    }
+</style>
+
+<script>
+const REPO = 'atlatas/sniksnak';
+const TOKEN_KEY = 'sniksnak_gh_token';
+
+const tokenInput = document.getElementById('token-input') as HTMLInputElement;
+const authBtn = document.getElementById('auth-btn') as HTMLButtonElement;
+const authGate = document.getElementById('auth-gate')!;
+const form = document.getElementById('article-form') as HTMLFormElement;
+const publishBtn = document.getElementById('publish-btn') as HTMLButtonElement;
+const formStatus = document.getElementById('form-status')!;
+
+let token = localStorage.getItem(TOKEN_KEY);
+
+function showForm() {
+    authGate.style.display = 'none';
+    form.style.display = 'flex';
+}
+
+function slugify(title: string): string {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+}
+
+if (token) showForm();
+
+authBtn.addEventListener('click', async () => {
+    token = tokenInput.value.trim();
+    if (!token) return;
+    authBtn.textContent = 'Checking...';
+    try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) throw new Error();
+        localStorage.setItem(TOKEN_KEY, token);
+        showForm();
+    } catch {
+        tokenInput.style.borderColor = '#e74c3c';
+        authBtn.textContent = 'Invalid token';
+        setTimeout(() => { authBtn.textContent = 'Connect'; tokenInput.style.borderColor = ''; }, 2000);
+    }
+});
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!token) return;
+
+    const title = (document.getElementById('title') as HTMLInputElement).value.trim();
+    const category = (document.getElementById('category') as HTMLSelectElement).value;
+    const author = (document.getElementById('author') as HTMLInputElement).value.trim();
+    const excerpt = (document.getElementById('excerpt') as HTMLInputElement).value.trim();
+    const content = (document.getElementById('content') as HTMLTextAreaElement).value.trim();
+    const image = (document.getElementById('image') as HTMLInputElement).value.trim();
+    const readTime = (document.getElementById('readTime') as HTMLInputElement).value;
+    const featured = (document.getElementById('featured') as HTMLInputElement).checked;
+
+    const today = new Date().toISOString().split('T')[0];
+    const slug = `${today}-${slugify(title)}`;
+    const filename = `${slug}.md`;
+
+    const frontmatter = [
+        '---',
+        `title: "${title.replace(/"/g, '\\"')}"`,
+        `category: ${category}`,
+        'lang: en',
+        `date: ${today}`,
+        `author: ${author}`,
+        `excerpt: "${excerpt.replace(/"/g, '\\"')}"`,
+        ...(featured ? ['featured: true'] : []),
+        `readTime: ${readTime}`,
+        ...(image ? [`image: /images/${image}`] : []),
+        '---',
+        '',
+        content,
+    ].join('\n');
+
+    publishBtn.textContent = 'Publishing...';
+    publishBtn.disabled = true;
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+
+    try {
+        const res = await fetch(
+            `https://api.github.com/repos/${REPO}/contents/src/content/articles/${filename}`,
+            {
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: `Add article: ${title}`,
+                    content: btoa(unescape(encodeURIComponent(frontmatter))),
+                }),
+            }
+        );
+
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.message || `GitHub API error ${res.status}`);
+        }
+
+        formStatus.textContent = 'Published!';
+        formStatus.className = 'form-status success';
+        publishBtn.textContent = 'Published';
+        setTimeout(() => {
+            form.reset();
+            (document.getElementById('author') as HTMLInputElement).value = 'The Observer';
+            (document.getElementById('readTime') as HTMLInputElement).value = '3';
+            publishBtn.textContent = 'Publish Article';
+            publishBtn.disabled = false;
+            formStatus.textContent = '';
+        }, 3000);
+    } catch (err: any) {
+        formStatus.textContent = err.message;
+        formStatus.className = 'form-status error';
+        publishBtn.textContent = 'Publish Article';
+        publishBtn.disabled = false;
+    }
+});
+</script>
