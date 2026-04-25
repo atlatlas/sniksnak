@@ -7,6 +7,7 @@ author: The Observer
 excerpt: "When the people who decide things meet the people who actually live there, fireworks are inevitable."
 featured: true
 readTime: 3
+image: "/images/bureaucratic-ballet-ijsselstein.png"
 ---
 
 In the grand theater of modern governance, where decisions are often made in rooms with air conditioning and no grass stains on the trousers, IJsselstein recently staged a production that proved one simple truth: if you ask regular people to accept a plan they didn't see coming, they will eventually find a way to make it loud.
