@@ -1,6 +1,6 @@
 ---
 title: "The Circular Economy of War: How Ukraine Pays Russia to Fight Russia"
-category: column
+category: buitenland
 lang: en
 date: 2026-04-25
 author: The Observer
