@@ -8,7 +8,7 @@ interface Props {
 const { locale } = Astro.props;
 const strings = t(locale);
 const base = import.meta.env.BASE_URL;
-const prefix = `${base}${locale === 'en' ? '' : 'nl'}`;
+const prefix = `${base}${locale === 'en' ? '' : 'nl/'}`;
 ---
 
 <footer class="site-footer">
@@ -25,11 +25,11 @@ const prefix = `${base}${locale === 'en' ? '' : 'nl'}`;
         <div class="footer-links">
             <div class="footer-col">
                 <h4>{strings.footer.categories}</h4>
-                <a href={`${prefix}/rubriek/binnenland`}>{strings.nav.domestic}</a>
-                <a href={`${prefix}/rubriek/buitenland`}>{strings.nav.world}</a>
-                <a href={`${prefix}/rubriek/tech`}>{strings.nav.tech}</a>
-                <a href={`${prefix}/rubriek/sport`}>{strings.nav.sports}</a>
-                <a href={`${prefix}/rubriek/column`}>{strings.nav.column}</a>
+                <a href={`${prefix}rubriek/binnenland`}>{strings.nav.domestic}</a>
+                <a href={`${prefix}rubriek/buitenland`}>{strings.nav.world}</a>
+                <a href={`${prefix}rubriek/tech`}>{strings.nav.tech}</a>
+                <a href={`${prefix}rubriek/sport`}>{strings.nav.sports}</a>
+                <a href={`${prefix}rubriek/column`}>{strings.nav.column}</a>
             </div>
             <div class="footer-col">
                 <h4>{strings.footer.aboutUs}</h4>

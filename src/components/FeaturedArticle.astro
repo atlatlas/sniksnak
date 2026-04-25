@@ -22,14 +22,14 @@ const categoryLabels: Record<string, Record<string, string>> = {
 };
 
 const base = import.meta.env.BASE_URL;
-const prefix = `${base}${locale === 'en' ? '' : 'nl'}`;
+const prefix = `${base}${locale === 'en' ? '' : 'nl/'}`;
 const formattedDate = date.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 const initials = author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
 const categoryLabel = categoryLabels[locale]?.[category] || category;
 ---
 
 <article class="featured-article">
-    <a href={`${prefix}/artikels/${slug}`} class="featured-image">
+    <a href={`${prefix}artikels/${slug}`} class="featured-image">
         {image ? (
             <img src={`${base}${image.replace(/^\//, '')}`} alt={title} loading="lazy" />
         ) : (
@@ -44,7 +44,7 @@ const categoryLabel = categoryLabels[locale]?.[category] || category;
             <time datetime={date.toISOString()}>{formattedDate}</time>
             {readTime && <span class="read-time">{readTime} {strings.featured.readTime}</span>}
         </div>
-        <h1><a href={`${prefix}/artikels/${slug}`}>{title}</a></h1>
+        <h1><a href={`${prefix}artikels/${slug}`}>{title}</a></h1>
         <p class="featured-excerpt">{excerpt}</p>
         <div class="author">
             <div class="author-avatar">{initials}</div>

@@ -14,7 +14,7 @@ interface Props {
 const { recentArticles, locale } = Astro.props;
 const strings = t(locale);
 const base = import.meta.env.BASE_URL;
-const prefix = `${base}${locale === 'en' ? '' : 'nl'}`;
+const prefix = `${base}${locale === 'en' ? '' : 'nl/'}`;
 ---
 
 <aside class="sidebar">
@@ -23,7 +23,7 @@ const prefix = `${base}${locale === 'en' ? '' : 'nl'}`;
         {recentArticles.length > 0 ? (
             <ol class="trending-list">
                 {recentArticles.slice(0, 5).map(a => (
-                    <li><a href={`${prefix}/artikels/${a.slug}`}>{a.title}</a></li>
+                    <li><a href={`${prefix}artikels/${a.slug}`}>{a.title}</a></li>
                 ))}
             </ol>
         ) : (
