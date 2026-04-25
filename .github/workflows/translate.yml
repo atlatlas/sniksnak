@@ -6,6 +6,9 @@ on:
     paths:
       - 'src/content/articles/*.md'
 
+permissions:
+  contents: write
+
 jobs:
   translate:
     runs-on: ubuntu-latest
