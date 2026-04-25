@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://atlatlas.github.io/sniksnak/',
-  base: '/sniksnak/',
+  site: 'https://sniksnak.nl',
   output: 'static',
   i18n: {
     defaultLocale: 'en',
