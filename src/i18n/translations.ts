@@ -161,9 +161,11 @@ export function pathWithLocale(path: string, locale: Locale, currentLocale: Loca
 
 export function switchLocalePath(currentPath: string, targetLocale: Locale, currentLocale: Locale): string {
   const prefix = currentLocale === defaultLocale ? '' : `/${currentLocale}`;
-  const base = currentPath.startsWith(prefix) ? currentPath.slice(prefix.length) || '/' : currentPath;
+  let base = currentPath.startsWith(prefix) ? currentPath.slice(prefix.length) || '/' : currentPath;
 
+  // Strip .nl from article slugs when switching away from Dutch
   if (targetLocale === defaultLocale) {
+    base = base.replace(/\/([^/]+)\.nl\.md$/, '/$1');
     return base === '/' ? '/' : base;
   }
   return `/nl${base}`;
