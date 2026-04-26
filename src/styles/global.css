@@ -79,6 +79,42 @@ html {
     background: var(--color-accent);
 }
 
+[data-theme="dark"] .category-card-binnenland {
+    background: rgba(139, 233, 253, 0.1);
+}
+[data-theme="dark"] .category-card-binnenland:hover {
+    background: rgba(139, 233, 253, 0.15);
+}
+[data-theme="dark"] .category-card-binnenland h3 { color: #8BE9FD; }
+[data-theme="dark"] .category-card-binnenland p { color: var(--color-text-secondary); }
+
+[data-theme="dark"] .category-card-buitenland {
+    background: rgba(189, 147, 249, 0.1);
+}
+[data-theme="dark"] .category-card-buitenland:hover {
+    background: rgba(189, 147, 249, 0.15);
+}
+[data-theme="dark"] .category-card-buitenland h3 { color: #BD93F9; }
+[data-theme="dark"] .category-card-buitenland p { color: var(--color-text-secondary); }
+
+[data-theme="dark"] .category-card-tech {
+    background: rgba(80, 250, 123, 0.1);
+}
+[data-theme="dark"] .category-card-tech:hover {
+    background: rgba(80, 250, 123, 0.15);
+}
+[data-theme="dark"] .category-card-tech h3 { color: #50FA7B; }
+[data-theme="dark"] .category-card-tech p { color: var(--color-text-secondary); }
+
+[data-theme="dark"] .category-card-sport {
+    background: rgba(241, 250, 140, 0.1);
+}
+[data-theme="dark"] .category-card-sport:hover {
+    background: rgba(241, 250, 140, 0.15);
+}
+[data-theme="dark"] .category-card-sport h3 { color: #F1FA8C; }
+[data-theme="dark"] .category-card-sport p { color: var(--color-text-secondary); }
+
 [data-theme="dark"] .site-header {
     background: rgba(40, 42, 54, 0.92);
     border-bottom-color: var(--color-border);
