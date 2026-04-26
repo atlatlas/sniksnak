@@ -1,5 +1,5 @@
 ---
-title: "Utrecht zegt dat je mag komen, en stuurt je vervolgens weg: een Koningsdag-meesterklas in bureaucratische tegenstrijdigheid"
+title: "Utrecht zegt dat je mag komen, en stuurt je vervolgens weg: een Koningsnacht-meesterklas in bureaucratische tegenstrijdigheid"
 category: column
 lang: nl
 date: 2026-04-26
@@ -10,7 +10,7 @@ readTime: 3
 image: /images/kingsnight.png
 ---
 
-In een verbluffende vertoning van logistieke tegenstrijdigheid heeft de gemeente **Utrecht** besloten dat Koningsdag het beste kan worden gevierd door naar het centrum te komen en vervolgens onmiddellijk te horen te krijgen dat je moet vertrekken. Het lokale bestuur verspreidde een persbericht waarin burgers werd opgeroepen niet naar de binnenstad te komen omdat het al te druk was — een besluit dat suggereert dat ze de menigte verwachtten voordat de eerste oranje hoed was opgezet. Het is een diplomatieke prestatie in omgekeerde richting: mensen uitnodigen voor een feest en vervolgens de deur op slot doen zodra ze arriveren, onder het mom van *"overmatige bezetting."*
+In een verbluffende vertoning van logistieke tegenstrijdigheid heeft de gemeente **Utrecht** besloten dat Koningsnacht het beste kan worden gevierd door naar het centrum te komen en vervolgens onmiddellijk te horen te krijgen dat je moet vertrekken. Het lokale bestuur verspreidde een persbericht waarin burgers werd opgeroepen niet naar de binnenstad te komen omdat het al te druk was — een besluit dat suggereert dat ze de menigte verwachtten voordat de eerste oranje hoed was opgezet. Het is een diplomatieke prestatie in omgekeerde richting: mensen uitnodigen voor een feest en vervolgens de deur op slot doen zodra ze arriveren, onder het mom van *"overmatige bezetting."*
 
 ## Kom, maar blijf niet
 
@@ -48,4 +48,4 @@ In **Ankeveen** werd het dorpsfeest geannuleerd wegens vergrijzende vrijwilliger
 
 ## Een historische prestatie in burgerlijke terughoudendheid
 
-Koningsdag bewees dat terwijl de monarchie wordt gevierd met pracht en praal, de realiteit een reeks regels is die zijn ontworpen om de chaos te beheersen. Het was een historische prestatie in burgerlijke terughoudendheid — of dat zou het tenminste zijn geweest als iemand daadwerkelijk naar de instructies had geluisterd. De inwoners van Utrecht mogen dan niet naar het centrum kunnen komen, ze kunnen wel tot de conclusie komen dat het systeem het beste werkt wanneer iedereen in verwarring is over waar ze zouden moeten staan.
+Koningsnacht bewees dat terwijl de monarchie wordt gevierd met pracht en praal, de realiteit een reeks regels is die zijn ontworpen om de chaos te beheersen. Het was een historische prestatie in burgerlijke terughoudendheid — of dat zou het tenminste zijn geweest als iemand daadwerkelijk naar de instructies had geluisterd. De inwoners van Utrecht mogen dan niet naar het centrum kunnen komen, ze kunnen wel tot de conclusie komen dat het systeem het beste werkt wanneer iedereen in verwarring is over waar ze zouden moeten staan.

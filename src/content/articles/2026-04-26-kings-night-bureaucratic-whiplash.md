@@ -1,5 +1,5 @@
 ---
-title: "Utrecht Tells You to Come, Then Tells You to Leave: A King's Day Masterclass in Bureaucratic Whiplash"
+title: "Utrecht Tells You to Come, Then Tells You to Leave: A King's Night Masterclass in Bureaucratic Whiplash"
 category: column
 lang: en
 date: 2026-04-26
@@ -10,7 +10,7 @@ readTime: 3
 image: /images/kingsnight.png
 ---
 
-In a stunning display of logistical whiplash, the municipality of **Utrecht** has decided that King's Day is best enjoyed by arriving at the city center and then immediately being told to leave. The local government issued a press release urging citizens not to come to the inner city because it was already too crowded — a decision that suggests they anticipated the crowd before the first orange hat had been put on. It is a diplomatic achievement in reverse: inviting people to a party only to lock the door once they arrive, citing *"excessive occupancy."*
+In a stunning display of logistical whiplash, the municipality of **Utrecht** has decided that King's Night is best enjoyed by arriving at the city center and then immediately being told to leave. The local government issued a press release urging citizens not to come to the inner city because it was already too crowded — a decision that suggests they anticipated the crowd before the first orange hat had been put on. It is a diplomatic achievement in reverse: inviting people to a party only to lock the door once they arrive, citing *"excessive occupancy."*
 
 ## Come, But Don't Stay
 
@@ -30,7 +30,7 @@ However, the court intervened, ruling that the dinosaur blocked escape routes fo
 
 The **Dutch Railways (NS)** added their own layer of bureaucratic complexity by announcing that alcohol would be banned on trains from 19:00 until Tuesday morning, yet stations would still sell beer. It is a contradiction worthy of a philosophy thesis: you can buy the drink but not consume it in transit.
 
-Furthermore, the bike card was suspended for the day, meaning if you wanted to cycle to the station with your orange jersey, you had to pay extra or walk.
+Furthermore, the bike card was suspended for the night, meaning if you wanted to cycle to the station with your orange jersey, you had to pay extra or walk.
 
 > The message from the transport authority seemed to be: "If you are going to celebrate like a peasant, you must do so on foot."
 
@@ -48,4 +48,4 @@ In **Ankeveen**, the village festival was cancelled due to aging volunteers and 
 
 ## A Historic Achievement in Civic Restraint
 
-In conclusion, King's Day proved that while the monarchy is celebrated with pomp and circumstance, the reality is a series of rules designed to manage the chaos. It was a historic achievement in civic restraint, or at least it would have been if anyone had actually listened to the instructions. The people of Utrecht may not be able to come to the city center, but they can certainly come to the conclusion that the system works best when everyone is confused about where they are supposed to stand.
+In conclusion, King's Night proved that while the monarchy is celebrated with pomp and circumstance, the reality is a series of rules designed to manage the chaos. It was a historic achievement in civic restraint, or at least it would have been if anyone had actually listened to the instructions. The people of Utrecht may not be able to come to the city center, but they can certainly come to the conclusion that the system works best when everyone is confused about where they are supposed to stand.
