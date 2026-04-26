@@ -268,21 +268,17 @@ img {
 
 .ticker-track {
     overflow: hidden;
-    border-radius: var(--radius-md);
+    border-radius: 0;
 }
 
 .ticker-content {
     display: flex;
     align-items: center;
     gap: 28px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 60%),
-        linear-gradient(135deg, #FF4D4D 0%, #D93A3A 100%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 24px rgba(255, 77, 77, 0.3);
+    background: #1A1A1A;
+    border-top: 3px solid #FF4D4D;
     color: #fff;
     padding: 14px 28px;
-    border-radius: var(--radius-md);
     font-size: 13px;
     font-weight: 500;
     width: max-content;
@@ -290,7 +286,8 @@ img {
 }
 
 .ticker-empty {
-    background: var(--color-border-light);
+    background: #1A1A1A;
+    border-top: 3px solid var(--color-border-light);
     color: var(--color-text-tertiary);
     font-style: italic;
     width: auto;
