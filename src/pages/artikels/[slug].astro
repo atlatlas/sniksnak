@@ -11,7 +11,9 @@ export async function getStaticPaths() {
 
     const nlSlugMap = new Map<string, string>();
     for (const a of nlArticles) {
-        const baseSlug = a.slug.replace(/\.nl$/, '');
+        // Dutch slug is e.g. '2026-04-25-a12-seashorenl' (Astro strips the dot from .nl)
+        // Strip trailing 'nl' that was part of the .nl extension to get the English base
+        const baseSlug = a.slug.replace(/nl$/, '');
         nlSlugMap.set(baseSlug, a.slug);
     }
 

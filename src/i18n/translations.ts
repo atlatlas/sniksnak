@@ -163,10 +163,13 @@ export function switchLocalePath(currentPath: string, targetLocale: Locale, curr
   const prefix = currentLocale === defaultLocale ? '' : `/${currentLocale}`;
   let base = currentPath.startsWith(prefix) ? currentPath.slice(prefix.length) || '/' : currentPath;
 
-  // Strip .nl from article slugs when switching away from Dutch
   if (targetLocale === defaultLocale) {
-    base = base.replace(/\.nl$/, '');
+    // Strip trailing 'nl' from article slugs (Astro removes dot from .nl extension)
+    base = base.replace(/\/(artikels\/[^/]+)nl(\/|$)/, '/$1$2');
     return base === '/' ? '/' : base;
   }
+
+  // Append 'nl' to article slugs when switching to Dutch
+  base = base.replace(/\/(artikels\/[^/]+)(\/|$)/, '/$1nl$2');
   return `/nl${base}`;
 }

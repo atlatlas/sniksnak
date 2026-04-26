@@ -11,15 +11,14 @@ export async function getStaticPaths() {
 
     const enSlugMap = new Map<string, string>();
     for (const a of enArticles) {
-        const baseSlug = a.slug.replace(/\.nl$/, '');
-        enSlugMap.set(baseSlug, a.slug);
+        enSlugMap.set(a.slug, a.slug);
     }
 
     return articles.map(article => ({
         params: { slug: article.slug },
         props: {
             article,
-            enSlug: article.slug.endsWith('.nl') ? enSlugMap.get(article.slug.replace(/\.nl$/, '')) || null : null,
+            enSlug: enSlugMap.get(article.slug.replace(/nl$/, '')) || null,
         },
     }));
 }
