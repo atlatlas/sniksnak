@@ -275,11 +275,11 @@ img {
     display: flex;
     align-items: center;
     gap: 28px;
-    background: linear-gradient(135deg, rgba(255, 77, 77, 0.92), rgba(230, 54, 54, 0.92));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 4px 24px rgba(255, 77, 77, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 60%),
+        linear-gradient(135deg, #FF4D4D 0%, #D93A3A 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 24px rgba(255, 77, 77, 0.3);
     color: #fff;
     padding: 14px 28px;
     border-radius: var(--radius-md);
