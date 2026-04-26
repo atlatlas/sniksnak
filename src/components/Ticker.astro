@@ -1,24 +1,38 @@
 ---
 import { t, type Locale } from '../i18n/translations';
 
+interface TickerItem {
+    title: string;
+    slug: string;
+}
+
 interface Props {
-    headlines: string[];
+    headlines: TickerItem[];
     locale: Locale;
 }
 
 const { headlines, locale } = Astro.props;
 const strings = t(locale);
+const prefix = locale === 'en' ? '' : 'nl/';
 ---
 
 <div class="ticker">
     {headlines.length > 0 ? (
-        <div class="ticker-content">
-            {headlines.map((h, i) => (
-                <>
-                    <span class="ticker-item">{h}</span>
-                    {i < headlines.length - 1 && <span class="ticker-dot">&bull;</span>}
-                </>
-            ))}
+        <div class="ticker-track">
+            <div class="ticker-content">
+                {headlines.map((item, i) => (
+                    <>
+                        <a href={`${prefix}artikels/${item.slug}`} class="ticker-item">{item.title}</a>
+                        <span class="ticker-dot">&bull;</span>
+                    </>
+                ))}
+                {headlines.map((item, i) => (
+                    <>
+                        <a href={`${prefix}artikels/${item.slug}`} class="ticker-item">{item.title}</a>
+                        <span class="ticker-dot">&bull;</span>
+                    </>
+                ))}
+            </div>
         </div>
     ) : (
         <div class="ticker-content ticker-empty">

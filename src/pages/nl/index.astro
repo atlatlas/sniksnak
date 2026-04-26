@@ -22,7 +22,7 @@ const sorted = allArticles
 const featured = sorted.find(a => a.data.featured) || sorted[0];
 const remaining = featured ? sorted.filter(a => a.slug !== featured.slug) : sorted;
 
-const tickerHeadlines = sorted.slice(0, 3).map(a => a.data.title);
+const tickerHeadlines = sorted.slice(0, 3).map(a => ({ title: a.data.title, slug: a.slug }));
 const trendingArticles = sorted.slice(0, 5).map(a => ({ title: a.data.title, slug: a.slug }));
 ---
 

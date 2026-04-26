@@ -266,6 +266,11 @@ img {
     display: none;
 }
 
+.ticker-track {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+}
+
 .ticker-content {
     display: flex;
     align-items: center;
@@ -276,17 +281,31 @@ img {
     border-radius: var(--radius-md);
     font-size: 13px;
     font-weight: 500;
-    overflow: hidden;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite;
 }
 
 .ticker-empty {
     background: var(--color-border-light);
     color: var(--color-text-tertiary);
     font-style: italic;
+    width: auto;
+    animation: none;
+}
+
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .ticker-item {
     white-space: nowrap;
+    color: #fff;
+    text-decoration: none;
+}
+
+.ticker-item:hover {
+    text-decoration: underline;
 }
 
 .ticker-dot {
