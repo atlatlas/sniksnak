@@ -1,0 +1,16 @@
+---
+const base = import.meta.env.BASE_URL;
+const destination = `${base}artikels/2026-04-26-kings-night-bureaucratic-whiplash`;
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url=${destination}">
+    <link rel="canonical" href={destination}>
+</head>
+<body>
+    <p>Redirecting to <a href={destination}>the corrected article</a>...</p>
+</body>
+</html>
