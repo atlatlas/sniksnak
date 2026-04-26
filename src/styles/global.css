@@ -115,6 +115,15 @@ html {
 [data-theme="dark"] .category-card-sport h3 { color: #F1FA8C; }
 [data-theme="dark"] .category-card-sport p { color: var(--color-text-secondary); }
 
+[data-theme="dark"] .category-card-column {
+    background: rgba(255, 121, 198, 0.1);
+}
+[data-theme="dark"] .category-card-column:hover {
+    background: rgba(255, 121, 198, 0.15);
+}
+[data-theme="dark"] .category-card-column h3 { color: #FF79C6; }
+[data-theme="dark"] .category-card-column p { color: var(--color-text-secondary); }
+
 [data-theme="dark"] .site-header {
     background: rgba(40, 42, 54, 0.92);
     border-bottom-color: var(--color-border);
@@ -846,7 +855,7 @@ img {
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 16px;
 }
 
@@ -905,6 +914,13 @@ img {
 }
 .category-card-sport h3 { color: var(--color-text); }
 .category-card-sport p { color: var(--color-text-secondary); }
+
+.category-card-column {
+    background: #FDF2F8;
+    color: var(--color-column);
+}
+.category-card-column h3 { color: var(--color-text); }
+.category-card-column p { color: var(--color-text-secondary); }
 
 /* --- Article Detail Page --- */
 .article-detail {

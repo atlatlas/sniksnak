@@ -47,6 +47,7 @@ const translations = {
       world: { label: 'World', desc: "The rest of the world, but funny." },
       tech: { label: 'Tech', desc: 'Easy as pie, but with sarcasm.' },
       sports: { label: 'Sports', desc: 'Losing was never this entertaining.' },
+      column: { label: 'Column', desc: 'Opinions. As if yours wasnt enough.' },
     },
     categoryPage: {
       articles: 'articles',
@@ -115,6 +116,7 @@ const translations = {
       world: { label: 'Buitenland', desc: 'De rest van de wereld, maar dan grappig.' },
       tech: { label: 'Tech', desc: 'Appeltjes-eitjes, maar dan met sarcasme.' },
       sports: { label: 'Sport', desc: 'Verliezen was nog nooit zo vermakelijk.' },
+      column: { label: 'Column', desc: 'Meningen. Alsof je die van jou niet genoeg hebt.' },
     },
     categoryPage: {
       articles: 'artikelen',
