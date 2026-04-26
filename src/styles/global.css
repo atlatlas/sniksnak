@@ -42,6 +42,48 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+[data-theme="dark"] {
+    --color-bg: #282A36;
+    --color-surface: #21222C;
+    --color-text: #F8F8F2;
+    --color-text-secondary: #BFBFD0;
+    --color-text-tertiary: #6272A4;
+    --color-border: #44475A;
+    --color-border-light: #383A4A;
+    --color-accent: #FF5555;
+    --color-accent-hover: #E64646;
+    --color-accent-soft: rgba(255, 85, 85, 0.12);
+    --color-binnenland: #8BE9FD;
+    --color-buitenland: #BD93F9;
+    --color-tech: #50FA7B;
+    --color-sport: #F1FA8C;
+    --color-column: #FF79C6;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .ticker-content {
+    background: #1E1F29;
+}
+
+[data-theme="dark"] .site-footer {
+    background: #1E1F29;
+}
+
+[data-theme="dark"] .newsletter-box {
+    background: linear-gradient(135deg, #1E1F29 0%, #282A36 100%);
+}
+
+[data-theme="dark"] .logo-icon {
+    background: var(--color-accent);
+}
+
+[data-theme="dark"] .site-header {
+    background: rgba(40, 42, 54, 0.92);
+    border-bottom-color: var(--color-border);
+}
+
 body {
     font-family: var(--font);
     background: var(--color-bg);
@@ -152,6 +194,41 @@ img {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover {
+    background: var(--color-border-light);
+    color: var(--color-text);
+}
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+[data-theme="light"] .theme-icon-dark,
+[data-theme="dark"] .theme-icon-light {
+    display: none;
+}
+
+[data-theme="light"] .theme-icon-light,
+[data-theme="dark"] .theme-icon-dark {
+    display: block;
 }
 
 .search-toggle {
