@@ -31,7 +31,8 @@ const { title, description = 'Nieuws dat je nodig hebt, maar niet verdiend hebt.
     <script>
         // Theme toggle
         (function() {
-            const theme = localStorage.getItem('theme') || 'light';
+            const saved = localStorage.getItem('theme');
+            const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', theme);
         })();
 
