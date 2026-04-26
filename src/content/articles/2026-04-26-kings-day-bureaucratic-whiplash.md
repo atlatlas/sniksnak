@@ -2,7 +2,7 @@
 title: "Utrecht Tells You to Come, Then Tells You to Leave: A King's Day Masterclass in Bureaucratic Whiplash"
 category: column
 lang: en
-date: 2026-04-25
+date: 2026-04-26
 author: The Observer
 excerpt: "A study in how to celebrate a king while the city tries to evict you from his birthday party."
 featured: true

@@ -2,7 +2,7 @@
 title: "Utrecht zegt dat je mag komen, en stuurt je vervolgens weg: een Koningsdag-meesterklas in bureaucratische tegenstrijdigheid"
 category: column
 lang: nl
-date: 2026-04-25
+date: 2026-04-26
 author: The Observer
 excerpt: Een onderzoek naar hoe je een koning viert terwijl de stad je van zijn verjaardagsfeestje probeert te weren.
 featured: true
