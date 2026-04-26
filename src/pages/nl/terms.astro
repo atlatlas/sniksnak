@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { t, type Locale } from '../../i18n/translations';
+
+const locale: Locale = 'nl';
+const strings = t(locale);
+const currentPath = '/nl/terms';
+---
+
+<BaseLayout title="Voorwaarden — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Algemene Voorwaarden</h1>
+            <p class="standfirst">Door dit te lezen ga je akkoord met alles hieronder. We weten dat je het niet gelezen hebt. Wij ook niet.</p>
+
+            <div class="content-page-body">
+                <h2>1. Aanvaarding van Voorwaarden</h2>
+                <p>Door sniksnak.nl te bezoeken, ga je akkoord met deze voorwaarden. Als je niet akkoord gaat, ben je wettelijk verplicht dit tabblad te sluiten, naar buiten te gaan en je levenskeuzes te heroverwegen. We zullen niet oordelen. Oké, wel een beetje, maar stil.</p>
+
+                <h2>2. Vrijwaring Inhoud</h2>
+                <p>Alle inhoud op SNIKSNAK is satirisch van aard. Elke gelijkenis met daadwerkelijk nieuws, levende personen of echte gebeurtenissen is volledig opzettelijk, maar moet niet serieus worden genomen. Als je onze artikelen serieus neemt, is dat een jij-probleem, geen ons-probleem. Bijwerkingen van het lezen van SNIKSNAK kunnen zijn: lichte amusement, oogrollen en de drang om een artikel te delen met iemand die het niet grappig zal vinden.</p>
+
+                <h2>3. Intellectueel Eigendom</h2>
+                <p>Alle inhoud op deze website is eigendom van SNIKSNAK, behalve de delen die we van andere websites hebben gestolen (grapje) (meestal). Je mag onze artikelen vrij delen, zolang je ons vermeldt. Je mag onze inhoud niet vermenigvuldigen voor commerciële doeleinden, want eerlijk, als je denkt dat onze inhoud commerciële waarde heeft, moeten we het hebben over een baan, niet over voorwaarden.</p>
+
+                <h2>4. Gebruikersgedrag</h2>
+                <p>Je stemt ermee in deze website niet te gebruiken voor illegale doeleinden, waaronder maar niet beperkt tot: het gebruiken als bewijs in een rechtszaak, het indienen als bron in een academisch paper, of het laten zien aan je oma (ze zal het niet begrijpen en zich zorgen om je maken).</p>
+
+                <h2>5. Beperking van Aansprakelijkheid</h2>
+                <p>SNIKSNAK is niet verantwoordelijk voor enige schade veroorzaakt door het lezen van onze inhoud, waaronder maar niet beperkt tot: verwarring, lichte irritatie, verspilde tijd, of het plotselinge besef dat je productievere dingen met je leven zou kunnen doen. Onze totale aansprakelijkheid is beperkt tot het bedrag dat je hebt betaald om deze site te bezoeken, en dat is nul euro.</p>
+
+                <h2>6. Toepasselijk Recht</h2>
+                <p>Deze voorwaarden worden beheerst door de wetten van Nederland, omdat we daar zijn, en ook omdat de Nederlandse wet een bepaalde charme heeft wanneer toegepast op satirische nieuwswebsites. Eventuele geschillen worden beslecht door een coinflip op een neutrale locatie, waarschijnlijk een café in Amsterdam.</p>
+
+                <h2>7. Wijzigingen</h2>
+                <p>Wij behouden ons het recht voor om deze voorwaarden op elk moment zonder voorafgaande kennisgeving te wijzigen, omdat we het kunnen en omdat we genieten van de macht. Voortgezet gebruik van de website na wijzigingen geldt als aanvaarding, wat de juridische equivalent is van "ik kwam terug, dus ik vind het wel best."</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+</style>

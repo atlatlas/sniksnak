@@ -32,14 +32,14 @@ const prefix = `${base}${locale === 'en' ? '' : 'nl/'}`;
                 <a href={`${prefix}rubriek/column`}>{strings.nav.column}</a>
             </div>
             <div class="footer-col">
-                <h4><a href={`${base}about`}>{strings.footer.aboutUs}</a></h4>
-                <a href={`${base}editorial`}>{strings.footer.editorial}</a>
+                <h4><a href={`${prefix}about`}>{strings.footer.aboutUs}</a></h4>
+                <a href={`${prefix}editorial`}>{strings.footer.editorial}</a>
             </div>
             <div class="footer-col">
                 <h4>{strings.footer.legal}</h4>
-                <a href={`${base}privacy`}>{strings.footer.privacy}</a>
-                <a href={`${base}terms`}>{strings.footer.terms}</a>
-                <a href={`${base}cookies`}>{strings.footer.cookies}</a>
+                <a href={`${prefix}privacy`}>{strings.footer.privacy}</a>
+                <a href={`${prefix}terms`}>{strings.footer.terms}</a>
+                <a href={`${prefix}cookies`}>{strings.footer.cookies}</a>
             </div>
         </div>
     </div>

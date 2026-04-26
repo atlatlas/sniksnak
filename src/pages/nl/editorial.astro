@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { t, type Locale } from '../../i18n/translations';
+
+const locale: Locale = 'nl';
+const strings = t(locale);
+const currentPath = '/nl/editorial';
+---
+
+<BaseLayout title="Redactie — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Redactie</h1>
+            <p class="standfirst">Waar wij je vertellen wat je moet denken. Graag gedaan.</p>
+
+            <div class="content-page-body">
+                <h2>Over de Staat van het Moderne Nieuws</h2>
+                <p>Het is tot ons doorgedrongen dat sommige mensen het nieuws nog steeds lezen voor informatie. Dat is een fundamenteel misverstand over waar nieuws voor dient. Nieuws bestaat om je iets te geven om over te praten op verjaardagsfeestjes, om boos over te zijn op sociale media, en om te negeren tijdens het ontbijt. Wij bij SNIKSNAK hebben geoptimaliseerd voor alle drie.</p>
+
+                <h2>Over Objectiviteit</h2>
+                <p>Wij geloven dat objectiviteit overschat wordt. Elke nieuwsorganisatie heeft een voorkeur — de onze is alleen grappiger. Terwijl andere publicaties doen alsof ze "de feiten" met een strak gezicht presenteren, presenteren wij de feiten met opgetrokken wenkbrauwen, een grijns, en af en toe een slow clap. De informatie is hetzelfde. De presentatie is gewoon eerlijk over het feit dat we mensen zijn.</p>
+
+                <h2>Over Onze Redactionele Onafhankelijkheid</h2>
+                <p>SNIKSNAK is trots onafhankelijk, wat betekent dat we geen sponsors, geen investeerders en geen inkomsten hebben. Dit stelt ons in staat om te schrijven wat we willen, wat zowel een zegen als een vloek is, want het betekent ook dat we geen budget, geen kantoor en niemand hebben om de schuld te geven als er dingen misgaan.</p>
+
+                <h2>Over Brieven aan de Redactie</h2>
+                <p>Wij accepteren geen brieven aan de redactie, want we hebben geen redactie. We accepteren wel brieven aan The Observer, die worden gelezen, weggrinnikt en vervolgens binnen 3 tot 7 werkdagen verwijderd. Formulierbrieven worden bijzonder op prijs gesteld, omdat ze ons de moeite besparen om ze daadwerkelijk te lezen.</p>
+
+                <blockquote>"Een redactionele pagina zonder meningen is slechts een pagina." — The Observer</blockquote>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body blockquote { border-left: 3px solid var(--color-accent); padding-left: 20px; margin: 24px 0; font-style: italic; color: var(--color-text-tertiary); font-size: 16px; }
+</style>

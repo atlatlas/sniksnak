@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { t, type Locale } from '../../i18n/translations';
+
+const locale: Locale = 'nl';
+const strings = t(locale);
+const currentPath = '/nl/cookies';
+---
+
+<BaseLayout title="Cookies — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Cookiebeleid</h1>
+            <p class="standfirst">Een beleid over cookies, geschreven door mensen die de voorkeur geven aan stroopwafels.</p>
+
+            <div class="content-page-body">
+                <h2>Wat Zijn Cookies?</h2>
+                <p>Cookies zijn kleine tekstbestanden die door websites op je apparaat worden opgeslagen. Ze worden gebruikt om je voorkeuren te onthouden, je gedrag te volgen en gerichte advertenties mogelijk te maken. Wij vinden dit griezelig klinken, en daarom gebruiken we ze niet. Wij geven de voorkeur aan de soort cookies die tijdens de feestdagen in een blikje komen.</p>
+
+                <h2>Ons Cookiegebruik</h2>
+                <p>Wij plaatsen zelf geen cookies. Externe diensten die door deze site worden gebruikt (zoals Google Fonts) kunnen echter cookies plaatsen. Dat zijn hun cookies, niet onze cookies. Wij nemen geen verantwoordelijkheid voor hun cookies, net zoals we geen verantwoordelijkheid nemen voor de meeste dingen.</p>
+
+                <h2>Soorten Cookies Die We Niet Gebruiken</h2>
+                <ul>
+                    <li><strong>Functionele cookies:</strong> We hebben ze niet nodig. De site werkt prima zonder iets over je te onthouden, net als een slechte eerste date.</li>
+                    <li><strong>Analytische cookies:</strong> We volgen je niet. Deels uit respect voor je privacy, maar vooral omdat we niet weten hoe.</li>
+                    <li><strong>Marketingcookies:</strong> We adverteren niet, dus we hebben geen marketingcookies nodig. Dit is het enige gebied waar onze luiheid perfect samengaat met goede privacypraktijken.</li>
+                    <li><strong>Voorkeurscookies:</strong> We hebben geen voorkeuren om op te slaan. Jouw voorkeuren zijn jouw zaak.</li>
+                </ul>
+
+                <h2>Cookies Beheren</h2>
+                <p>Je kunt cookies beheren via je browserinstellingen. Aangezien wij geen cookies gebruiken, valt er hier niets te beheren, maar we waarderen je initiatief. We raden aan deze tijd te gebruiken om je daadwerkelijke cookievoorkeuren te beheren — de eetbare soort. We suggereren speculaas.</p>
+
+                <h2>Contact</h2>
+                <p>Als je vragen hebt over cookies, richt ze dan aan een vertrouwde vriend, een huisdier of de leegte. Alle drie zijn even waarschijnlijk om een nuttig antwoord te geven.</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body ul { margin: 16px 0 24px; padding-left: 24px; }
+    .content-page-body li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 8px; }
+</style>

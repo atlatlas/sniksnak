@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { t, type Locale } from '../../i18n/translations';
+
+const locale: Locale = 'nl';
+const strings = t(locale);
+const currentPath = '/nl/about';
+---
+
+<BaseLayout title="Over ons — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Over SNIKSNAK</h1>
+            <p class="standfirst">Het nieuws dat je nodig hebt, maar niet verdiend hebt. Opgericht in 2026, ergens in Nederland.</p>
+
+            <div class="content-page-body">
+                <p>SNIKSNAK is opgericht vanuit de simpele overtuiging dat het nieuws te serieus is en de wereld te absurd om beide serieus te nemen. Wij bestaan om de kloof te overbruggen tussen wat er werkelijk gebeurt en wat er had moeten gebeuren, met een gezonde dosis sarcasme ertussenin.</p>
+
+                <h2>Onze Missie</h2>
+                <p>Om je het nieuws te brengen waar je niet om vroeg, gepresenteerd op een manier waarvan je niet wist dat je hem nodig had. Elk artikel is zorgvuldig samengesteld om ongeveer 73% feitelijk en 27% artistieke interpretatie te zijn — de exacte verhouding die advocaten op afstand houdt terwijl het toch vermakelijk blijft.</p>
+
+                <h2>Ons Team</h2>
+                <p>We zijn een klein team van één (1) Observer, ondersteund door een redactieraad die bestaat uit wie er toevallig in de kamer was toen er beslissingen werden genomen. Onze factcheckafdeling is een AI die ons er af en toe aan herinnert dat "niet alles een punchline nodig heeft." We negeren het.</p>
+
+                <h2>Onze Waarden</h2>
+                <ul>
+                    <li><strong>Sarcasme eerst.</strong> Als je niet kunt lachen om het nieuws, lees je het verkeerd.</li>
+                    <li><strong>Geen bron achtergelaten.</strong> Elke bewering die we doen is gebaseerd op ten minste één echt gebeurde gebeurtenis. We beschrijven het alleen anders.</li>
+                    <li><strong>Onpartijdige spot.</strong> We bespotten iedereen gelijk, ongeacht politieke overtuiging, nationaliteit, of of ze ooit aardig voor ons zijn geweest.</li>
+                    <li><strong>Deadlines.</strong> We publiceren wanneer we er zin in hebben, wat meestal is wanneer de schuld ondraaglijk wordt.</li>
+                </ul>
+
+                <h2>Contact</h2>
+                <p>Heb je een klacht? Mooi. Heb je een compliment? Nog beter. Hoe dan ook, we lezen het niet. Maar bedankt voor je interesse.</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body ul { margin: 16px 0 24px; padding-left: 24px; }
+    .content-page-body li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 8px; }
+    .content-page-body a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+</style>

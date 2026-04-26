@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { t, type Locale } from '../../i18n/translations';
+
+const locale: Locale = 'nl';
+const strings = t(locale);
+const currentPath = '/nl/privacy';
+---
+
+<BaseLayout title="Privacy — SNIKSNAK">
+    <Header slot="header" locale={locale} currentPath={currentPath} />
+
+    <div class="content-page">
+        <div class="content-page-inner">
+            <h1>Privacybeleid</h1>
+            <p class="standfirst">Wij nemen je privacy serieus. Daarom is dit beleid langer dan de meeste van onze artikelen.</p>
+
+            <div class="content-page-body">
+                <p><em>Laatst bijgewerkt: Toen we ons herinnerden dat we er een nodig hadden.</em></p>
+
+                <h2>Wat We Verzamelen</h2>
+                <p>Eerlijk gezegd, niet veel. We gebruiken GitHub Pages, dus wat GitHub verzamelt, verzamelen zij. Wij verzamelen zo goed als niets, omdat we niet de technische infrastructuur hebben om iets te verzamelen. Wij zijn, in privacytermen, de digitale equivalent van een heremiet die in een grot woont.</p>
+
+                <h2>Cookies</h2>
+                <p>Wij gebruiken geen cookies. Als je een cookie vindt op deze site, waren wij het niet. Het is waarschijnlijk een externe tracker die we niet hebben uitgenodigd en waar we niet vanaf komen. Zie het als die ene familielid die onuitgenodigd op elke familiefeestdag verschijnt en je moet het maar accepteren.</p>
+
+                <h2>Externe Partijen</h2>
+                <p>Deze site wordt gehost op GitHub Pages en maakt mogelijk gebruik van Google Fonts. Beide diensten hebben hun eigen privacybeleid dat veel uitgebreider en veel minder vermakelijk is dan dit. We raden aan ze te lezen als je moeite hebt met slapen.</p>
+
+                <h2>Jouw Rechten</h2>
+                <p>Je hebt het recht om:</p>
+                <ul>
+                    <li>Deze website niet te bezoeken</li>
+                    <li>Dit tabblad op elk moment te sluiten</li>
+                    <li>Je browsergeschiedenis te wissen zodat niemand weet dat je hier was</li>
+                    <li>Te doen alsof je dit nooit hebt gelezen</li>
+                </ul>
+
+                <h2>Gegevensbewaring</h2>
+                <p>Eventuele gegevens die we per ongeluk verzamelen, worden bewaard totdat iemand vraagt ze te verwijderen of totdat we ons herinneren dat ze bestaan, wat het eerst komt. Gezien onze staat van dienst zal het waarschijnlijk het laatste zijn.</p>
+
+                <h2>Wijzigingen in Dit Beleid</h2>
+                <p>We kunnen dit privacybeleid van tijd tot tijd bijwerken, maar waarschijnlijk doen we dat niet. Als we het wel doen, verandert de datum "Laatst bijgewerkt", wat de enige manier is waarop iemand het zou opmerken.</p>
+
+                <h2>Contact</h2>
+                <p>Voor privacygerelateerde vragen raden we aan een brief te schrijven en die in je tuin te begraven. Als het universum wil dat we hem vinden, gebeurt dat.</p>
+            </div>
+        </div>
+    </div>
+
+    <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<style>
+    .content-page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .content-page h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+    .standfirst { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 40px; line-height: 1.6; }
+    .content-page-body h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; }
+    .content-page-body p { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 20px; }
+    .content-page-body ul { margin: 16px 0 24px; padding-left: 24px; }
+    .content-page-body li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 8px; }
+</style>
