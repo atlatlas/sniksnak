@@ -165,7 +165,7 @@ export function switchLocalePath(currentPath: string, targetLocale: Locale, curr
 
   // Strip .nl from article slugs when switching away from Dutch
   if (targetLocale === defaultLocale) {
-    base = base.replace(/\/([^/]+)\.nl\.md$/, '/$1');
+    base = base.replace(/\.nl$/, '');
     return base === '/' ? '/' : base;
   }
   return `/nl${base}`;
