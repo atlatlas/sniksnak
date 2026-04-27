@@ -2,7 +2,7 @@
 title: "De burgemeester die niet blij was en het veld dat geen veld was"
 category: binnenland
 lang: nl
-date: 2026-04-25
+date: 2026-04-27
 author: The Observer
 excerpt: Een onderzoek naar hoe je protesteert tegen geprocedeerde vluchtelingen op een tijdelijk veld, terwijl de burgemeester toegeeft dat ze een slechte dag heeft.
 featured: false

@@ -2,7 +2,7 @@
 title: "The Mayor Who Wasn't Happy and the Field That Wasn't a Field"
 category: binnenland
 lang: en
-date: 2026-04-25
+date: 2026-04-27
 author: The Observer
 excerpt: "A study in how to protest processed refugees on a temporary pitch while the mayor admits she's having a bad day."
 featured: false
